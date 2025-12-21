@@ -62,7 +62,7 @@ These results show cognitive context improves sensitivity, while evidence gating
 
 ## 🧪 How to Run
 
-1. Install Python and dependencies (e.g., `mesa`, `pandas`, `numpy`, `scikit-learn`).  Needs Mesa 3.3.1 version to exexute it.
+1. Install Python and dependencies (e.g., `mesa`, `pandas`, `numpy`, `scikit-learn`).  Needs Mesa 3.3.1 version to execute it.
 2. Run the baseline or variant script:
 
 ```bash
