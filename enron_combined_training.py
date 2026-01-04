@@ -9,14 +9,14 @@ Combined Email Forensics Training using BOTH Enron datasets:
 This provides:
 - Better classifier (trained on real labeled spam/ham)
 - Better baselines (from full corpus vocabulary)
-- More credible for academic paper (using established benchmark)
+
 
 Usage:
     python enron_combined_training.py emails.csv enron_spam_data.csv
 
 Output:
     - combined_forensics_model.pkl (trained model)
-    - Training statistics for paper
+    
 """
 
 import csv
@@ -755,31 +755,7 @@ def train_combined_model(full_corpus_path: str, spam_data_path: str,
     # Save model
     agent.save(output_path)
     
-    # Print summary for paper
-    print("\n" + "="*70)
-    print("STATISTICS FOR PAPER (Section III.A)")
-    print("="*70)
-    print(f"""
-We utilize two complementary Enron email corpora for training the behavioral
-forensics component:
-
-1) Full Enron Corpus: The complete Enron email dataset contains approximately
-   {full_loader.stats['total_raw']:,} emails. After preprocessing (removing emails under 30 words
-   and handling parsing errors), we retained {full_loader.stats['total_processed']:,} emails from
-   {full_loader.stats['unique_senders']:,} unique senders. This corpus provides:
-   
-   - Vocabulary baseline: {full_loader.stats['vocabulary_size']:,} unique words
-   - Sender profiles: {full_loader.stats['senders_5_plus']:,} users with ≥5 emails each
-   - Writing style metrics: avg. sentence length {full_loader.stats['avg_sentence_length']:.1f} words,
-     vocabulary richness {full_loader.stats['avg_vocab_richness']:.2f}, avg. word count {full_loader.stats['avg_word_count']:.1f}
-   - External communication ratio: {full_loader.stats['external_ratio']:.1f}% of emails to non-Enron addresses
-   - Attachment mention rate: {full_loader.stats['attachment_ratio']:.1f}%
-
-2) Enron Spam Dataset [15]: Contains {spam_loader.stats['total']:,} labeled emails
-   ({spam_loader.stats['spam']:,} spam, {spam_loader.stats['ham']:,} ham) curated for spam filtering benchmarks.
-   The phishing classifier trained on this dataset achieves {agent.classifier_accuracy:.2%} accuracy.
-""")
-    
+     
     return agent
 
 
@@ -797,7 +773,6 @@ if __name__ == "__main__":
         print("  2. Load Enron spam dataset for classifier training")
         print("  3. Train combined forensics model")
         print("  4. Save to combined_forensics_model.pkl")
-        print("  5. Output statistics for your paper")
         sys.exit(1)
     
     full_corpus_path = sys.argv[1]
