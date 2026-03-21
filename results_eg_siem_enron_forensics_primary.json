@@ -1,0 +1,1670 @@
+{
+  "preset": "forensics_primary",
+  "variants": {
+    "full": {
+      "config": {
+        "runs": 10,
+        "steps": 240,
+        "warmup": 60,
+        "base_seed": 42,
+        "forensics_model_path": "combined_forensics_model_fixed.pkl",
+        "forensics_mode": "full",
+        "preset": "forensics_primary",
+        "population_kwargs": {
+          "n_takeover": 0
+        }
+      },
+      "per_run": [
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 2.25,
+          "ttd_max": 4.0,
+          "confirmed_alerts": 49,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 3,
+            "36": 4,
+            "37": 2,
+            "41": 0
+          },
+          "run": 1,
+          "seed": 42
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 3.0,
+          "ttd_max": 5.0,
+          "confirmed_alerts": 39,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 5,
+            "36": 5,
+            "37": 2,
+            "41": 0
+          },
+          "run": 2,
+          "seed": 43
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 39,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 3,
+          "seed": 44
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 42,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 4,
+          "seed": 45
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 2.25,
+          "ttd_max": 4.0,
+          "confirmed_alerts": 36,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 4,
+            "37": 3,
+            "41": 0
+          },
+          "run": 5,
+          "seed": 46
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.5,
+          "ttd_max": 2.0,
+          "confirmed_alerts": 47,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 2,
+            "41": 0
+          },
+          "run": 6,
+          "seed": 47
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 2.5,
+          "ttd_max": 5.0,
+          "confirmed_alerts": 50,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 5,
+            "37": 3,
+            "41": 0
+          },
+          "run": 7,
+          "seed": 48
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 41,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 8,
+          "seed": 49
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 42,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 9,
+          "seed": 50
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.5,
+          "ttd_max": 2.0,
+          "confirmed_alerts": 44,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 2,
+            "41": 0
+          },
+          "run": 10,
+          "seed": 51
+        }
+      ],
+      "average": {
+        "actor_precision": 1.0,
+        "actor_recall": 0.5714285714285714,
+        "actor_f1": 0.7272727272727273,
+        "ttd_avg": 2.0,
+        "ttd_max": 3.4,
+        "confirmed_alerts": 42.9,
+        "confirmed_alert_precision": 1.0,
+        "confirmed_fp_per_run": 0.0,
+        "actors_detected": 4.0,
+        "actors_total": 7.0,
+        "false_detected_actors": 0.0,
+        "tom_detections": 0.0
+      },
+      "std": {
+        "actor_precision": 0.0,
+        "actor_recall": 0.0,
+        "actor_f1": 0.0,
+        "ttd_avg": 0.4609772228646444,
+        "ttd_max": 1.019803902718557,
+        "confirmed_alerts": 4.346262762420146,
+        "confirmed_alert_precision": 0.0,
+        "confirmed_fp_per_run": 0.0,
+        "actors_detected": 0.0,
+        "actors_total": 0.0,
+        "false_detected_actors": 0.0,
+        "tom_detections": 0.0
+      }
+    },
+    "keyword_only": {
+      "config": {
+        "runs": 10,
+        "steps": 240,
+        "warmup": 60,
+        "base_seed": 42,
+        "forensics_model_path": "combined_forensics_model_fixed.pkl",
+        "forensics_mode": "keyword_only",
+        "preset": "forensics_primary",
+        "population_kwargs": {
+          "n_takeover": 0
+        }
+      },
+      "per_run": [
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 2.25,
+          "ttd_max": 4.0,
+          "confirmed_alerts": 49,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 3,
+            "36": 4,
+            "37": 2,
+            "41": 0
+          },
+          "run": 1,
+          "seed": 42
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 3.0,
+          "ttd_max": 5.0,
+          "confirmed_alerts": 39,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 5,
+            "36": 5,
+            "37": 2,
+            "41": 0
+          },
+          "run": 2,
+          "seed": 43
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 39,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 3,
+          "seed": 44
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 42,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 4,
+          "seed": 45
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 2.25,
+          "ttd_max": 4.0,
+          "confirmed_alerts": 36,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 4,
+            "37": 3,
+            "41": 0
+          },
+          "run": 5,
+          "seed": 46
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.5,
+          "ttd_max": 2.0,
+          "confirmed_alerts": 47,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 2,
+            "41": 0
+          },
+          "run": 6,
+          "seed": 47
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 2.5,
+          "ttd_max": 5.0,
+          "confirmed_alerts": 50,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 5,
+            "37": 3,
+            "41": 0
+          },
+          "run": 7,
+          "seed": 48
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 41,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 8,
+          "seed": 49
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 42,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 9,
+          "seed": 50
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.5,
+          "ttd_max": 2.0,
+          "confirmed_alerts": 44,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 2,
+            "41": 0
+          },
+          "run": 10,
+          "seed": 51
+        }
+      ],
+      "average": {
+        "actor_precision": 1.0,
+        "actor_recall": 0.5714285714285714,
+        "actor_f1": 0.7272727272727273,
+        "ttd_avg": 2.0,
+        "ttd_max": 3.4,
+        "confirmed_alerts": 42.9,
+        "confirmed_alert_precision": 1.0,
+        "confirmed_fp_per_run": 0.0,
+        "actors_detected": 4.0,
+        "actors_total": 7.0,
+        "false_detected_actors": 0.0,
+        "tom_detections": 0.0
+      },
+      "std": {
+        "actor_precision": 0.0,
+        "actor_recall": 0.0,
+        "actor_f1": 0.0,
+        "ttd_avg": 0.4609772228646444,
+        "ttd_max": 1.019803902718557,
+        "confirmed_alerts": 4.346262762420146,
+        "confirmed_alert_precision": 0.0,
+        "confirmed_fp_per_run": 0.0,
+        "actors_detected": 0.0,
+        "actors_total": 0.0,
+        "false_detected_actors": 0.0,
+        "tom_detections": 0.0
+      }
+    },
+    "model_only": {
+      "config": {
+        "runs": 10,
+        "steps": 240,
+        "warmup": 60,
+        "base_seed": 42,
+        "forensics_model_path": "combined_forensics_model_fixed.pkl",
+        "forensics_mode": "model_only",
+        "preset": "forensics_primary",
+        "population_kwargs": {
+          "n_takeover": 0
+        }
+      },
+      "per_run": [
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 2.25,
+          "ttd_max": 4.0,
+          "confirmed_alerts": 49,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 3,
+            "36": 4,
+            "37": 2,
+            "41": 0
+          },
+          "run": 1,
+          "seed": 42
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 3.0,
+          "ttd_max": 5.0,
+          "confirmed_alerts": 39,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 5,
+            "36": 5,
+            "37": 2,
+            "41": 0
+          },
+          "run": 2,
+          "seed": 43
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 39,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 3,
+          "seed": 44
+        },
+        {
+          "actor_precision": 0.8,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.6666666666666666,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 43,
+          "confirmed_alert_precision": 0.9767441860465116,
+          "confirmed_fp_per_run": 1,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 1,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [
+            11
+          ],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 4,
+          "seed": 45
+        },
+        {
+          "actor_precision": 0.8,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.6666666666666666,
+          "ttd_avg": 2.25,
+          "ttd_max": 4.0,
+          "confirmed_alerts": 43,
+          "confirmed_alert_precision": 0.8372093023255814,
+          "confirmed_fp_per_run": 7,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 1,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [
+            7
+          ],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 4,
+            "37": 3,
+            "41": 0
+          },
+          "run": 5,
+          "seed": 46
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.5,
+          "ttd_max": 2.0,
+          "confirmed_alerts": 47,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 2,
+            "41": 0
+          },
+          "run": 6,
+          "seed": 47
+        },
+        {
+          "actor_precision": 0.8,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.6666666666666666,
+          "ttd_avg": 2.5,
+          "ttd_max": 5.0,
+          "confirmed_alerts": 54,
+          "confirmed_alert_precision": 0.9259259259259259,
+          "confirmed_fp_per_run": 4,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 1,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [
+            19
+          ],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 5,
+            "37": 3,
+            "41": 0
+          },
+          "run": 7,
+          "seed": 48
+        },
+        {
+          "actor_precision": 1.0,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.7272727272727273,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 41,
+          "confirmed_alert_precision": 1.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 8,
+          "seed": 49
+        },
+        {
+          "actor_precision": 0.8,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.6666666666666666,
+          "ttd_avg": 1.75,
+          "ttd_max": 3.0,
+          "confirmed_alerts": 44,
+          "confirmed_alert_precision": 0.9545454545454546,
+          "confirmed_fp_per_run": 2,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 1,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [
+            7
+          ],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 3,
+            "41": 0
+          },
+          "run": 9,
+          "seed": 50
+        },
+        {
+          "actor_precision": 0.6666666666666666,
+          "actor_recall": 0.5714285714285714,
+          "actor_f1": 0.6153846153846153,
+          "ttd_avg": 1.5,
+          "ttd_max": 2.0,
+          "confirmed_alerts": 50,
+          "confirmed_alert_precision": 0.88,
+          "confirmed_fp_per_run": 6,
+          "actors_detected": 4,
+          "actors_total": 7,
+          "false_detected_actors": 2,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [
+            35,
+            36,
+            37,
+            41
+          ],
+          "false_detected_actor_ids": [
+            4,
+            17
+          ],
+          "time_to_detection_by_actor": {
+            "35": 2,
+            "36": 2,
+            "37": 2,
+            "41": 0
+          },
+          "run": 10,
+          "seed": 51
+        }
+      ],
+      "average": {
+        "actor_precision": 0.8866666666666667,
+        "actor_recall": 0.5714285714285714,
+        "actor_f1": 0.6918414918414919,
+        "ttd_avg": 2.0,
+        "ttd_max": 3.4,
+        "confirmed_alerts": 44.9,
+        "confirmed_alert_precision": 0.9574424868843474,
+        "confirmed_fp_per_run": 2.0,
+        "actors_detected": 4.0,
+        "actors_total": 7.0,
+        "false_detected_actors": 0.6,
+        "tom_detections": 0.0
+      },
+      "std": {
+        "actor_precision": 0.11944315244779279,
+        "actor_recall": 0.0,
+        "actor_f1": 0.0382852497298794,
+        "ttd_avg": 0.4609772228646444,
+        "ttd_max": 1.019803902718557,
+        "confirmed_alerts": 4.72122865364515,
+        "confirmed_alert_precision": 0.05557275326856182,
+        "confirmed_fp_per_run": 2.569046515733026,
+        "actors_detected": 0.0,
+        "actors_total": 0.0,
+        "false_detected_actors": 0.6633249580710799,
+        "tom_detections": 0.0
+      }
+    },
+    "disabled": {
+      "config": {
+        "runs": 10,
+        "steps": 240,
+        "warmup": 60,
+        "base_seed": 42,
+        "forensics_model_path": "combined_forensics_model_fixed.pkl",
+        "forensics_mode": "disabled",
+        "preset": "forensics_primary",
+        "population_kwargs": {
+          "n_takeover": 0
+        }
+      },
+      "per_run": [
+        {
+          "actor_precision": 0.0,
+          "actor_recall": 0.0,
+          "actor_f1": 0.0,
+          "ttd_avg": 0.0,
+          "ttd_max": 0.0,
+          "confirmed_alerts": 0,
+          "confirmed_alert_precision": 0.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 0,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {},
+          "run": 1,
+          "seed": 42
+        },
+        {
+          "actor_precision": 0.0,
+          "actor_recall": 0.0,
+          "actor_f1": 0.0,
+          "ttd_avg": 0.0,
+          "ttd_max": 0.0,
+          "confirmed_alerts": 0,
+          "confirmed_alert_precision": 0.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 0,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {},
+          "run": 2,
+          "seed": 43
+        },
+        {
+          "actor_precision": 0.0,
+          "actor_recall": 0.0,
+          "actor_f1": 0.0,
+          "ttd_avg": 0.0,
+          "ttd_max": 0.0,
+          "confirmed_alerts": 0,
+          "confirmed_alert_precision": 0.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 0,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {},
+          "run": 3,
+          "seed": 44
+        },
+        {
+          "actor_precision": 0.0,
+          "actor_recall": 0.0,
+          "actor_f1": 0.0,
+          "ttd_avg": 0.0,
+          "ttd_max": 0.0,
+          "confirmed_alerts": 0,
+          "confirmed_alert_precision": 0.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 0,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {},
+          "run": 4,
+          "seed": 45
+        },
+        {
+          "actor_precision": 0.0,
+          "actor_recall": 0.0,
+          "actor_f1": 0.0,
+          "ttd_avg": 0.0,
+          "ttd_max": 0.0,
+          "confirmed_alerts": 0,
+          "confirmed_alert_precision": 0.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 0,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {},
+          "run": 5,
+          "seed": 46
+        },
+        {
+          "actor_precision": 0.0,
+          "actor_recall": 0.0,
+          "actor_f1": 0.0,
+          "ttd_avg": 0.0,
+          "ttd_max": 0.0,
+          "confirmed_alerts": 0,
+          "confirmed_alert_precision": 0.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 0,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {},
+          "run": 6,
+          "seed": 47
+        },
+        {
+          "actor_precision": 0.0,
+          "actor_recall": 0.0,
+          "actor_f1": 0.0,
+          "ttd_avg": 0.0,
+          "ttd_max": 0.0,
+          "confirmed_alerts": 0,
+          "confirmed_alert_precision": 0.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 0,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {},
+          "run": 7,
+          "seed": 48
+        },
+        {
+          "actor_precision": 0.0,
+          "actor_recall": 0.0,
+          "actor_f1": 0.0,
+          "ttd_avg": 0.0,
+          "ttd_max": 0.0,
+          "confirmed_alerts": 0,
+          "confirmed_alert_precision": 0.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 0,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {},
+          "run": 8,
+          "seed": 49
+        },
+        {
+          "actor_precision": 0.0,
+          "actor_recall": 0.0,
+          "actor_f1": 0.0,
+          "ttd_avg": 0.0,
+          "ttd_max": 0.0,
+          "confirmed_alerts": 0,
+          "confirmed_alert_precision": 0.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 0,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {},
+          "run": 9,
+          "seed": 50
+        },
+        {
+          "actor_precision": 0.0,
+          "actor_recall": 0.0,
+          "actor_f1": 0.0,
+          "ttd_avg": 0.0,
+          "ttd_max": 0.0,
+          "confirmed_alerts": 0,
+          "confirmed_alert_precision": 0.0,
+          "confirmed_fp_per_run": 0,
+          "actors_detected": 0,
+          "actors_total": 7,
+          "false_detected_actors": 0,
+          "tom_detections": 0,
+          "malicious_actor_ids": [
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "detected_actor_ids": [],
+          "false_detected_actor_ids": [],
+          "time_to_detection_by_actor": {},
+          "run": 10,
+          "seed": 51
+        }
+      ],
+      "average": {
+        "actor_precision": 0.0,
+        "actor_recall": 0.0,
+        "actor_f1": 0.0,
+        "ttd_avg": 0.0,
+        "ttd_max": 0.0,
+        "confirmed_alerts": 0.0,
+        "confirmed_alert_precision": 0.0,
+        "confirmed_fp_per_run": 0.0,
+        "actors_detected": 0.0,
+        "actors_total": 7.0,
+        "false_detected_actors": 0.0,
+        "tom_detections": 0.0
+      },
+      "std": {
+        "actor_precision": 0.0,
+        "actor_recall": 0.0,
+        "actor_f1": 0.0,
+        "ttd_avg": 0.0,
+        "ttd_max": 0.0,
+        "confirmed_alerts": 0.0,
+        "confirmed_alert_precision": 0.0,
+        "confirmed_fp_per_run": 0.0,
+        "actors_detected": 0.0,
+        "actors_total": 0.0,
+        "false_detected_actors": 0.0,
+        "tom_detections": 0.0
+      }
+    }
+  },
+  "average_summary": {
+    "full": {
+      "actor_precision": 1.0,
+      "actor_recall": 0.5714285714285714,
+      "actor_f1": 0.7272727272727273,
+      "ttd_avg": 2.0,
+      "ttd_max": 3.4,
+      "confirmed_alerts": 42.9,
+      "confirmed_alert_precision": 1.0,
+      "confirmed_fp_per_run": 0.0,
+      "actors_detected": 4.0,
+      "actors_total": 7.0,
+      "false_detected_actors": 0.0,
+      "tom_detections": 0.0
+    },
+    "keyword_only": {
+      "actor_precision": 1.0,
+      "actor_recall": 0.5714285714285714,
+      "actor_f1": 0.7272727272727273,
+      "ttd_avg": 2.0,
+      "ttd_max": 3.4,
+      "confirmed_alerts": 42.9,
+      "confirmed_alert_precision": 1.0,
+      "confirmed_fp_per_run": 0.0,
+      "actors_detected": 4.0,
+      "actors_total": 7.0,
+      "false_detected_actors": 0.0,
+      "tom_detections": 0.0
+    },
+    "model_only": {
+      "actor_precision": 0.8866666666666667,
+      "actor_recall": 0.5714285714285714,
+      "actor_f1": 0.6918414918414919,
+      "ttd_avg": 2.0,
+      "ttd_max": 3.4,
+      "confirmed_alerts": 44.9,
+      "confirmed_alert_precision": 0.9574424868843474,
+      "confirmed_fp_per_run": 2.0,
+      "actors_detected": 4.0,
+      "actors_total": 7.0,
+      "false_detected_actors": 0.6,
+      "tom_detections": 0.0
+    },
+    "disabled": {
+      "actor_precision": 0.0,
+      "actor_recall": 0.0,
+      "actor_f1": 0.0,
+      "ttd_avg": 0.0,
+      "ttd_max": 0.0,
+      "confirmed_alerts": 0.0,
+      "confirmed_alert_precision": 0.0,
+      "confirmed_fp_per_run": 0.0,
+      "actors_detected": 0.0,
+      "actors_total": 7.0,
+      "false_detected_actors": 0.0,
+      "tom_detections": 0.0
+    }
+  }
+}
