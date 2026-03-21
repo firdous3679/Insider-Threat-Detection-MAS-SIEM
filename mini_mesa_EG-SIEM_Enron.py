@@ -35,6 +35,7 @@ except:
 # ============================================================================
 
 class CombinedForensicsAgent:
+    MODES = {"full", "keyword_only", "model_only", "disabled"}
     """
     Email forensics agent using the combined Enron-trained model.
     Loads from pickle file trained by enron_combined_training.py
@@ -51,7 +52,9 @@ class CombinedForensicsAgent:
         'password', 'credential', 'classified'
     ]
     
-    def __init__(self, model_path: str = None):
+    def __init__(self, model_path: str = None, mode: str = "full"):
+        self.mode = mode if mode in self.MODES else "full"
+
         # Baselines (will be loaded from model or use defaults)
         self.vocabulary_size = 575895
         self.baseline_sentence_length = 14.60
@@ -62,6 +65,7 @@ class CombinedForensicsAgent:
         self.vectorizer = None
         self.classifier = None
         self.classifier_accuracy = 0.0
+        self.learned_phrase_weights = {}
         
         # Runtime profiling
         self.author_profiles = defaultdict(lambda: {"count": 0, "avg_len": [], "vocab": []})
@@ -69,10 +73,14 @@ class CombinedForensicsAgent:
         self.total_words = 0
         
         # Load model if path provided
-        if model_path and os.path.exists(model_path):
+        if self.mode in {"full", "model_only"} and model_path and os.path.exists(model_path):
             self._load_model(model_path)
+        elif self.mode in {"full", "model_only"}:
+            print(f"Note: No trained model loaded. Falling back from {self.mode} to keyword-only/disabled behavior.")
+        elif self.mode == "keyword_only":
+            print("Note: Forensics running in keyword_only mode.")
         else:
-            print(f"Note: No trained model loaded. Using keyword-only detection.")
+            print("Note: Forensics disabled.")
     
     def _load_model(self, path: str):
         """Load trained model from pickle file"""
@@ -87,6 +95,7 @@ class CombinedForensicsAgent:
             self.vectorizer = data.get('vectorizer')
             self.classifier = data.get('classifier')
             self.classifier_accuracy = data.get('classifier_accuracy', 0.0)
+            self.learned_phrase_weights = data.get('learned_phrase_weights', {})
             
             print(f"Loaded combined forensics model from: {path}")
             print(f"  Classifier accuracy: {self.classifier_accuracy:.2%}")
@@ -108,22 +117,33 @@ class CombinedForensicsAgent:
         
         # 1. Keyword-based detection
         keyword_hits = sum(1 for kw in self.PHISHING_KEYWORDS if kw in content_lower)
-        keyword_score = min(1.0, keyword_hits / 3.0)
+        keyword_score = min(1.0, keyword_hits / 3.0) if self.mode in {"full", "keyword_only"} else 0.0
         
-        # 2. ML-based detection (from trained classifier)
+        # 2. ML-based detection (from trained classifier + learned phrase priors)
         ml_score = 0.0
-        if self.classifier and self.vectorizer:
+        base_ml_score = 0.0
+        if self.mode in {"full", "model_only"} and self.classifier and self.vectorizer:
             try:
                 X = self.vectorizer.transform([content])
-                ml_score = self.classifier.predict_proba(X)[0][1]
+                base_ml_score = self.classifier.predict_proba(X)[0][1]
             except:
                 pass
+        phrase_score = 0.0
+        if self.mode in {"full", "model_only"} and self.learned_phrase_weights:
+            matched = [weight for phrase, weight in self.learned_phrase_weights.items() if phrase in content_lower and weight > 0]
+            if matched:
+                phrase_score = min(1.0, sum(matched) * 12.0)
+        ml_score = max(base_ml_score, phrase_score)
         
         # 3. Combined phishing score
-        if self.classifier:
+        if self.mode == "full" and self.classifier:
             phishing_score = 0.7 * ml_score + 0.3 * keyword_score
-        else:
+        elif self.mode == "model_only":
+            phishing_score = ml_score
+        elif self.mode == "keyword_only":
             phishing_score = keyword_score
+        else:
+            phishing_score = 0.0
         
         # 4. Urgency detection
         urgency_keywords = ['urgent', 'immediately', 'asap', 'now', 'deadline']
@@ -810,6 +830,44 @@ class SIEMAgent(mesa.Agent):
         self.trust[u] = max(self.cfg.trust_min, min(self.cfg.trust_max, self.trust[u] + delta))
 
 
+
+
+def build_siem_config(preset="full"):
+    if preset == "forensics_primary":
+        return SIEMConfig(
+            use_policy=False,
+            use_baseline=False,
+            use_trust=False,
+            use_ml=False,
+            use_tom=False,
+            use_forensics=True,
+            use_evidence_gate=False,
+            use_peer_norm=False,
+            use_regularity=False,
+            early_threshold=0.75,
+            base_confirmed_threshold=1.25,
+            cooldown=1,
+            min_evidence_count=0,
+            min_evidence_weight=0.0,
+            forensics_weight=3.0,
+            role_adj={"staff": 0.0, "analyst": 0.0, "admin": 0.0},
+            w={
+                "anchor_email": 1.0, "anchor_login": 0.0, "export_large": 0.0, "export_small": 0.0,
+                "staging_export": 0.0, "after_hours": 0.0, "sens_burst": 0.0, "login_burst": 0.0,
+                "unapproved": 0.0, "email_burst": 0.0, "exfil_chain": 0.0,
+                "tom_intent": 0.0, "tom_plan": 0.0, "forensics_phishing": 3.0, "peer_dev": 0.0, "irreg": 0.0,
+                "stealth_pattern": 0.0, "ext_email_count": 0.0})
+    return SIEMConfig(
+        use_policy=True, use_baseline=True, use_trust=True, use_ml=True,
+        use_tom=True, use_forensics=True, use_evidence_gate=True,
+        use_peer_norm=True, use_regularity=True)
+
+
+def build_population_kwargs(preset="full"):
+    if preset == "forensics_primary":
+        return {"n_takeover": 0}
+    return {}
+
 # ============================================================================
 # Model
 # ============================================================================
@@ -817,7 +875,7 @@ class SIEMAgent(mesa.Agent):
 class InsiderModel(mesa.Model):
     def __init__(self, n_emp=30, n_power=4, n_exfil=3, n_stealth=2, n_takeover=1, 
                  n_staging=1, n_email=1, seed=42, siem_cfg=None, warmup=60,
-                 forensics_model_path=None):
+                 forensics_model_path=None, forensics_mode="full"):
         super().__init__(seed=seed)
         
         self.steps = 0
@@ -830,7 +888,7 @@ class InsiderModel(mesa.Model):
         self.attack_enabled = False
         
         # Load forensics model
-        forensics_agent = CombinedForensicsAgent(forensics_model_path)
+        forensics_agent = CombinedForensicsAgent(forensics_model_path, mode=forensics_mode)
         
         # Create agents
         for _ in range(n_emp):
@@ -897,103 +955,147 @@ class InsiderModel(mesa.Model):
 
 def evaluate(event_log, warmup):
     test = [e for e in event_log if e.phase == "test"]
-    mal_actors, det_actors, ttd_map, first_mal = set(), set(), {}, {}
-    
-    conf = [e for e in test if e.event_type == "alert_confirmed"]
-    conf_tp = sum(1 for a in conf if a.label == "malicious")
-    conf_fp = sum(1 for a in conf if a.label != "malicious")
-    
+
+    malicious_actor_ids, first_malicious_step = set(), {}
     for e in test:
         if e.label == "malicious" and e.event_type not in {"alert_early", "alert_confirmed"}:
-            mal_actors.add(e.actor_id)
-            if e.actor_id not in first_mal:
-                first_mal[e.actor_id] = e.step
-    
-    for a in conf:
-        if a.label == "malicious":
-            det_actors.add(a.actor_id)
-            if a.actor_id not in ttd_map and a.actor_id in first_mal:
-                ttd_map[a.actor_id] = a.step - first_mal[a.actor_id]
-    
-    n_mal, n_det = len(mal_actors), len(det_actors)
-    p = n_det / (n_det + conf_fp) if (n_det + conf_fp) else 0
-    r = n_det / n_mal if n_mal else 0
-    f1 = 2*p*r/(p+r) if (p+r) else 0
-    ttd_vals = list(ttd_map.values())
-    
-    tom_det = sum(1 for a in conf if "tom:" in str(a.meta.get("reasons", [])))
-    
-    return {"precision": p, "recall": r, "f1": f1, 
-            "ttd_avg": np.mean(ttd_vals) if ttd_vals else 0,
-            "ttd_max": max(ttd_vals) if ttd_vals else 0,
-            "conf_total": len(conf), "conf_prec": conf_tp/len(conf) if conf else 0,
-            "conf_fp": conf_fp, "actors_detected": n_det, "actors_total": n_mal,
-            "tom_detections": tom_det}
+            malicious_actor_ids.add(e.actor_id)
+            first_malicious_step.setdefault(e.actor_id, e.step)
+
+    confirmed_alerts = [e for e in test if e.event_type == "alert_confirmed"]
+    confirmed_tp_alerts = [a for a in confirmed_alerts if a.label == "malicious"]
+    confirmed_fp_alerts = [a for a in confirmed_alerts if a.label != "malicious"]
+
+    detected_actor_ids = {a.actor_id for a in confirmed_tp_alerts}
+    false_detected_actor_ids = {a.actor_id for a in confirmed_fp_alerts}
+    tp_detected_actor_ids = detected_actor_ids & malicious_actor_ids
+
+    actor_precision = (
+        len(tp_detected_actor_ids) / (len(tp_detected_actor_ids) + len(false_detected_actor_ids))
+        if (len(tp_detected_actor_ids) + len(false_detected_actor_ids))
+        else 0.0
+    )
+    actor_recall = len(tp_detected_actor_ids) / len(malicious_actor_ids) if malicious_actor_ids else 0.0
+    actor_f1 = 2 * actor_precision * actor_recall / (actor_precision + actor_recall) if (actor_precision + actor_recall) else 0.0
+
+    time_to_detection = {}
+    for a in confirmed_tp_alerts:
+        if a.actor_id in first_malicious_step and a.actor_id not in time_to_detection:
+            time_to_detection[a.actor_id] = a.step - first_malicious_step[a.actor_id]
+    ttd_vals = list(time_to_detection.values())
+
+    tom_det = sum(1 for a in confirmed_alerts if "tom:" in str(a.meta.get("reasons", [])))
+
+    return {
+        "actor_precision": actor_precision,
+        "actor_recall": actor_recall,
+        "actor_f1": actor_f1,
+        "ttd_avg": float(np.mean(ttd_vals)) if ttd_vals else 0.0,
+        "ttd_max": float(max(ttd_vals)) if ttd_vals else 0.0,
+        "confirmed_alerts": len(confirmed_alerts),
+        "confirmed_alert_precision": len(confirmed_tp_alerts) / len(confirmed_alerts) if confirmed_alerts else 0.0,
+        "confirmed_fp_per_run": len(confirmed_fp_alerts),
+        "actors_detected": len(tp_detected_actor_ids),
+        "actors_total": len(malicious_actor_ids),
+        "false_detected_actors": len(false_detected_actor_ids),
+        "tom_detections": tom_det,
+        "malicious_actor_ids": sorted(malicious_actor_ids),
+        "detected_actor_ids": sorted(tp_detected_actor_ids),
+        "false_detected_actor_ids": sorted(false_detected_actor_ids),
+        "time_to_detection_by_actor": {str(k): v for k, v in sorted(time_to_detection.items())},
+    }
 
 
-def run_experiment(T=240, warmup=60, runs=10, forensics_model_path=None):
-    """Run the EG-SIEM experiment with combined forensics model"""
-    
-    print("="*70)
+def run_experiment(T=240, warmup=60, runs=10, forensics_model_path=None, results_path=None, forensics_mode="full", preset="full"):
+    """Run the EG-SIEM experiment with corrected actor-level evaluation."""
+
+    print("=" * 70)
     print("EG-SIEM WITH COMBINED ENRON-TRAINED FORENSICS")
-    print("="*70)
-    
-    if forensics_model_path:
-        print(f"Forensics model: {forensics_model_path}")
-    else:
-        print("Forensics model: None (using keyword-only detection)")
-    
+    print("=" * 70)
+    print(f"Forensics model: {forensics_model_path if forensics_model_path else 'None'}")
+    print(f"Forensics mode: {forensics_mode}")
     print(f"Runs: {runs}, Steps: {T}, Warmup: {warmup}")
+    print(f"Preset: {preset}")
     print()
-    
-    cfg = SIEMConfig(
-        use_policy=True, use_baseline=True, use_trust=True, use_ml=True,
-        use_tom=True, use_forensics=True, use_evidence_gate=True,
-        use_peer_norm=True, use_regularity=True)
-    
+
+    cfg = build_siem_config(preset)
+    population_kwargs = build_population_kwargs(preset)
+
     results = []
-    
+    numeric_keys = [
+        'actor_precision', 'actor_recall', 'actor_f1', 'ttd_avg', 'ttd_max',
+        'confirmed_alerts', 'confirmed_alert_precision', 'confirmed_fp_per_run',
+        'actors_detected', 'actors_total', 'false_detected_actors', 'tom_detections'
+    ]
+
     for r in range(runs):
-        model = InsiderModel(seed=42+r, siem_cfg=cfg, warmup=warmup,
-                            forensics_model_path=forensics_model_path)
+        seed = 42 + r
+        model = InsiderModel(seed=seed, siem_cfg=cfg, warmup=warmup,
+                            forensics_model_path=forensics_model_path, forensics_mode=forensics_mode, **population_kwargs)
         for _ in range(T):
             model.step()
         metrics = evaluate(model.event_log, warmup)
+        metrics['run'] = r + 1
+        metrics['seed'] = seed
         results.append(metrics)
-        
-        print(f"Run {r+1}: F1={metrics['f1']:.3f} (P={metrics['precision']:.3f}, R={metrics['recall']:.3f}), "
-              f"Confirmed={metrics['conf_total']}, FP={metrics['conf_fp']}, ToM={metrics['tom_detections']}")
-    
-    # Calculate averages
+
+        print(
+            f"Run {r+1}: actor_f1={metrics['actor_f1']:.3f} "
+            f"(actor_precision={metrics['actor_precision']:.3f}, actor_recall={metrics['actor_recall']:.3f}), "
+            f"confirmed_alerts={metrics['confirmed_alerts']}, "
+            f"confirmed_alert_precision={metrics['confirmed_alert_precision']:.3f}, "
+            f"confirmed_fp_per_run={metrics['confirmed_fp_per_run']}, ToM={metrics['tom_detections']}"
+        )
+
     print()
-    print("="*70)
+    print("=" * 70)
     print("AVERAGED RESULTS")
-    print("="*70)
-    
-    avg = {k: np.mean([r[k] for r in results]) for k in results[0]}
-    std = {k: np.std([r[k] for r in results]) for k in results[0]}
-    
+    print("=" * 70)
+
+    avg = {k: float(np.mean([r[k] for r in results])) for k in numeric_keys}
+    std = {k: float(np.std([r[k] for r in results])) for k in numeric_keys}
+
     print(f"""
 Actor-level Performance:
-  Precision:  {avg['precision']:.4f} ± {std['precision']:.4f}
-  Recall:     {avg['recall']:.4f} ± {std['recall']:.4f}
-  F1:         {avg['f1']:.4f} ± {std['f1']:.4f}
+  actor_precision:           {avg['actor_precision']:.4f} ± {std['actor_precision']:.4f}
+  actor_recall:              {avg['actor_recall']:.4f} ± {std['actor_recall']:.4f}
+  actor_f1:                  {avg['actor_f1']:.4f} ± {std['actor_f1']:.4f}
 
 Time-to-Detection:
-  Average:    {avg['ttd_avg']:.2f} steps
-  Maximum:    {avg['ttd_max']:.2f} steps
+  ttd_avg:                   {avg['ttd_avg']:.2f} steps
+  ttd_max:                   {avg['ttd_max']:.2f} steps
 
 Alert Statistics:
-  Confirmed alerts/run:  {avg['conf_total']:.1f}
-  Confirmed precision:   {avg['conf_prec']:.4f}
-  False positives/run:   {avg['conf_fp']:.1f}
-  ToM-assisted/run:      {avg['tom_detections']:.1f}
+  confirmed_alerts/run:      {avg['confirmed_alerts']:.1f}
+  confirmed_alert_precision: {avg['confirmed_alert_precision']:.4f}
+  confirmed_fp_per_run:      {avg['confirmed_fp_per_run']:.1f}
+  tom_detections/run:        {avg['tom_detections']:.1f}
 
 Actor Detection:
-  Detected: {avg['actors_detected']:.1f}/{avg['actors_total']:.1f}
+  tp_detected_actors/run:    {avg['actors_detected']:.1f}/{avg['actors_total']:.1f}
+  false_detected_actors/run: {avg['false_detected_actors']:.1f}
 """)
-    
-    return results
+
+    bundle = {
+        'config': {
+            'runs': runs,
+            'steps': T,
+            'warmup': warmup,
+            'base_seed': 42,
+            'forensics_model_path': forensics_model_path,
+            'forensics_mode': forensics_mode,
+            'preset': preset,
+            'population_kwargs': population_kwargs,
+        },
+        'per_run': results,
+        'average': avg,
+        'std': std,
+    }
+    if results_path:
+        with open(results_path, 'w', encoding='utf-8') as f:
+            json.dump(bundle, f, indent=2)
+        print(f"Results JSON saved to: {results_path}")
+    return bundle
 
 
 # ============================================================================
@@ -1009,6 +1111,9 @@ if __name__ == "__main__":
     parser.add_argument('--runs', type=int, default=10, help='Number of simulation runs')
     parser.add_argument('--steps', type=int, default=240, help='Steps per run')
     parser.add_argument('--warmup', type=int, default=60, help='Warmup steps')
+    parser.add_argument('--results-json', type=str, default='results_eg_siem_enron_fixed.json', help='Where to save machine-readable results')
+    parser.add_argument('--forensics-mode', type=str, default='full', choices=sorted(CombinedForensicsAgent.MODES), help='full, keyword_only, model_only, or disabled')
+    parser.add_argument('--preset', type=str, default='full', choices=['full', 'forensics_primary'], help='Experiment preset')
     
     args = parser.parse_args()
     
@@ -1022,4 +1127,4 @@ if __name__ == "__main__":
     print()
     
     run_experiment(T=args.steps, warmup=args.warmup, runs=args.runs, 
-                   forensics_model_path=model_path)
+                   forensics_model_path=model_path, results_path=args.results_json, forensics_mode=args.forensics_mode, preset=args.preset)
