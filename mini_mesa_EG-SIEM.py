@@ -386,6 +386,11 @@ class MaliciousInsider(mesa.Agent):
         self.scenario, self.start_step, self.repeat_every, self.phase = scenario, start_step, repeat_every, 0
         self.model.register_user(self.unique_id, "staff", False, set())
     def _ah(self, s): h = s % 24; return h < 7 or h > 19
+    def _sample_malicious_email(self):
+        dst = self.random.choice(MALICIOUS_DESTINATIONS)
+        attachment_kb = self.random.randint(0, 4000)
+        content = self.random.choice(MALICIOUS_TEMPLATES)
+        return dst, attachment_kb, content
     def act(self):
         if not getattr(self.model, "attack_enabled", True): return
         s, ah = self.model.steps, self._ah(self.model.steps)
@@ -402,8 +407,9 @@ class MaliciousInsider(mesa.Agent):
                     bytes=self.random.randint(80000, 260000), meta={"after_hours": ah}, label="malicious", scenario=self.scenario))
                 self.phase = 3
             elif self.phase == 3:
-                self.model.emit_action(Event(s, "email_send", self.unique_id, dst="external@outside",
-                    meta={"attachment_kb": self.random.randint(600, 4000), "content": "Confidential patient data. Confirm immediately.", "after_hours": ah},
+                dst, attachment_kb, content = self._sample_malicious_email()
+                self.model.emit_action(Event(s, "email_send", self.unique_id, dst=dst,
+                    meta={"attachment_kb": attachment_kb, "content": content, "after_hours": ah},
                     label="malicious", scenario=self.scenario))
                 self.phase = 4
         elif self.scenario == "stealth":
@@ -413,8 +419,9 @@ class MaliciousInsider(mesa.Agent):
                         bytes=self.random.randint(800, 5000), meta={"after_hours": ah}, label="malicious", scenario=self.scenario))
                 if self.random.random() < 0.08: self.phase = 3
             elif self.phase == 3:
-                self.model.emit_action(Event(s, "email_send", self.unique_id, dst="external@outside",
-                    meta={"attachment_kb": self.random.randint(300, 2500), "content": "Summary attached.", "after_hours": ah},
+                dst, attachment_kb, content = self._sample_malicious_email()
+                self.model.emit_action(Event(s, "email_send", self.unique_id, dst=dst,
+                    meta={"attachment_kb": attachment_kb, "content": content, "after_hours": ah},
                     label="malicious", scenario=self.scenario))
                 self.phase = 4
         elif self.scenario == "acct_takeover":
@@ -435,17 +442,47 @@ class MaliciousInsider(mesa.Agent):
                     label="malicious", scenario=self.scenario))
                 self.phase = 3
             elif self.phase == 3:
-                self.model.emit_action(Event(s, "email_send", self.unique_id, dst="external@outside",
-                    meta={"attachment_kb": self.random.randint(600, 4500), "content": "Private data. Do not share.", "after_hours": ah},
+                dst, attachment_kb, content = self._sample_malicious_email()
+                self.model.emit_action(Event(s, "email_send", self.unique_id, dst=dst,
+                    meta={"attachment_kb": attachment_kb, "content": content, "after_hours": ah},
                     label="malicious", scenario=self.scenario))
                 self.phase = 4
         elif self.scenario == "email_only":
             if self.random.random() < 0.2:
-                self.model.emit_action(Event(s, "email_send", self.unique_id, dst="external@outside",
-                    meta={"attachment_kb": self.random.randint(250, 2500), "content": "Confidential docs. Act now!", "after_hours": ah},
+                dst, attachment_kb, content = self._sample_malicious_email()
+                self.model.emit_action(Event(s, "email_send", self.unique_id, dst=dst,
+                    meta={"attachment_kb": attachment_kb, "content": content, "after_hours": ah},
                     label="malicious", scenario=self.scenario))
         if self.phase == 4 and self.repeat_every and (s - self.start_step) % self.repeat_every == 0 and s > self.start_step:
             self.phase = 1
+
+
+MALICIOUS_TEMPLATES = [
+    "Confidential patient data. Confirm immediately.",
+    "Please share the dataset externally.",
+    "Upload the files to external storage.",
+    "Send the records to my personal email.",
+    "Transfer the data to outside system.",
+    "Forward this report externally.",
+    "Summary attached.",
+    "Private data. Do not share.",
+    "Confidential docs. Act now!",
+
+    # Harder paraphrases with fewer obvious cues
+    "Can you make this accessible off-network?",
+    "I need to review this from home system.",
+    "Let’s sync this outside for quick access.",
+    "Share this with my alternate account.",
+    "Move this to backup location.",
+    "Provide access from remote endpoint.",
+]
+
+MALICIOUS_DESTINATIONS = [
+    "external@outside",
+    "colleague@internal",
+    "partner@outside",
+    "partner0@approved.com",
+]
 
 # ============ Monitors ============
 class DBMonitor(mesa.Agent):

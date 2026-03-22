@@ -4,22 +4,27 @@
     "steps": 240,
     "warmup": 60,
     "base_seed": 42,
-    "forensics_model_path": "combined_forensics_model_fixed.pkl"
+    "forensics_model_path": "combined_forensics_model.pkl",
+    "forensics_mode": "keyword_only",
+    "preset": "forensics_primary",
+    "population_kwargs": {
+      "n_takeover": 0
+    }
   },
   "per_run": [
     {
       "actor_precision": 1.0,
-      "actor_recall": 0.875,
-      "actor_f1": 0.9333333333333333,
-      "ttd_avg": 4.428571428571429,
-      "ttd_max": 18.0,
-      "confirmed_alerts": 36,
+      "actor_recall": 0.7142857142857143,
+      "actor_f1": 0.8333333333333333,
+      "ttd_avg": 142.8,
+      "ttd_max": 370.0,
+      "confirmed_alerts": 17,
       "confirmed_alert_precision": 1.0,
       "confirmed_fp_per_run": 0,
-      "actors_detected": 7,
-      "actors_total": 8,
+      "actors_detected": 5,
+      "actors_total": 7,
       "false_detected_actors": 0,
-      "tom_detections": 13,
+      "tom_detections": 0,
       "malicious_actor_ids": [
         35,
         36,
@@ -27,44 +32,39 @@
         38,
         39,
         40,
-        41,
-        42
+        41
       ],
       "detected_actor_ids": [
         35,
-        36,
-        37,
         38,
         39,
-        41,
-        42
+        40,
+        41
       ],
       "false_detected_actor_ids": [],
       "time_to_detection_by_actor": {
-        "35": 3,
-        "36": 4,
-        "37": 3,
-        "38": 1,
-        "39": 18,
-        "41": 2,
-        "42": 0
+        "35": 150,
+        "38": 32,
+        "39": 4,
+        "40": 158,
+        "41": 370
       },
       "run": 1,
       "seed": 42
     },
     {
       "actor_precision": 1.0,
-      "actor_recall": 0.875,
-      "actor_f1": 0.9333333333333333,
-      "ttd_avg": 11.428571428571429,
-      "ttd_max": 56.0,
-      "confirmed_alerts": 31,
+      "actor_recall": 0.42857142857142855,
+      "actor_f1": 0.6,
+      "ttd_avg": 110.0,
+      "ttd_max": 314.0,
+      "confirmed_alerts": 20,
       "confirmed_alert_precision": 1.0,
       "confirmed_fp_per_run": 0,
-      "actors_detected": 7,
-      "actors_total": 8,
+      "actors_detected": 3,
+      "actors_total": 7,
       "false_detected_actors": 0,
-      "tom_detections": 13,
+      "tom_detections": 0,
       "malicious_actor_ids": [
         35,
         36,
@@ -72,44 +72,35 @@
         38,
         39,
         40,
-        41,
-        42
+        41
       ],
       "detected_actor_ids": [
-        35,
         36,
-        37,
-        38,
         39,
-        41,
-        42
+        41
       ],
       "false_detected_actor_ids": [],
       "time_to_detection_by_actor": {
-        "35": 5,
-        "36": 5,
-        "37": 2,
-        "38": 9,
-        "39": 56,
-        "41": 3,
-        "42": 0
+        "36": 4,
+        "39": 12,
+        "41": 314
       },
       "run": 2,
       "seed": 43
     },
     {
       "actor_precision": 1.0,
-      "actor_recall": 0.875,
-      "actor_f1": 0.9333333333333333,
-      "ttd_avg": 6.857142857142857,
-      "ttd_max": 25.0,
-      "confirmed_alerts": 38,
+      "actor_recall": 0.2857142857142857,
+      "actor_f1": 0.4444444444444445,
+      "ttd_avg": 13.0,
+      "ttd_max": 20.0,
+      "confirmed_alerts": 24,
       "confirmed_alert_precision": 1.0,
       "confirmed_fp_per_run": 0,
-      "actors_detected": 7,
-      "actors_total": 8,
+      "actors_detected": 2,
+      "actors_total": 7,
       "false_detected_actors": 0,
-      "tom_detections": 13,
+      "tom_detections": 0,
       "malicious_actor_ids": [
         35,
         36,
@@ -117,44 +108,33 @@
         38,
         39,
         40,
-        41,
-        42
+        41
       ],
       "detected_actor_ids": [
         35,
-        36,
-        37,
-        38,
-        39,
-        41,
-        42
+        41
       ],
       "false_detected_actor_ids": [],
       "time_to_detection_by_actor": {
-        "35": 2,
-        "36": 2,
-        "37": 4,
-        "38": 25,
-        "39": 11,
-        "41": 4,
-        "42": 0
+        "35": 6,
+        "41": 20
       },
       "run": 3,
       "seed": 44
     },
     {
       "actor_precision": 1.0,
-      "actor_recall": 0.875,
-      "actor_f1": 0.9333333333333333,
-      "ttd_avg": 10.571428571428571,
-      "ttd_max": 51.0,
-      "confirmed_alerts": 37,
+      "actor_recall": 0.42857142857142855,
+      "actor_f1": 0.6,
+      "ttd_avg": 68.66666666666667,
+      "ttd_max": 150.0,
+      "confirmed_alerts": 28,
       "confirmed_alert_precision": 1.0,
       "confirmed_fp_per_run": 0,
-      "actors_detected": 7,
-      "actors_total": 8,
+      "actors_detected": 3,
+      "actors_total": 7,
       "false_detected_actors": 0,
-      "tom_detections": 13,
+      "tom_detections": 0,
       "malicious_actor_ids": [
         35,
         36,
@@ -162,44 +142,35 @@
         38,
         39,
         40,
-        41,
-        42
+        41
       ],
       "detected_actor_ids": [
         35,
-        36,
         37,
-        38,
-        39,
-        41,
-        42
+        41
       ],
       "false_detected_actor_ids": [],
       "time_to_detection_by_actor": {
-        "35": 2,
-        "36": 2,
-        "37": 2,
-        "38": 51,
-        "39": 15,
-        "41": 2,
-        "42": 0
+        "35": 150,
+        "37": 54,
+        "41": 2
       },
       "run": 4,
       "seed": 45
     },
     {
       "actor_precision": 1.0,
-      "actor_recall": 0.875,
-      "actor_f1": 0.9333333333333333,
-      "ttd_avg": 3.142857142857143,
-      "ttd_max": 7.0,
-      "confirmed_alerts": 32,
+      "actor_recall": 0.42857142857142855,
+      "actor_f1": 0.6,
+      "ttd_avg": 69.33333333333333,
+      "ttd_max": 104.0,
+      "confirmed_alerts": 11,
       "confirmed_alert_precision": 1.0,
       "confirmed_fp_per_run": 0,
-      "actors_detected": 7,
-      "actors_total": 8,
+      "actors_detected": 3,
+      "actors_total": 7,
       "false_detected_actors": 0,
-      "tom_detections": 13,
+      "tom_detections": 0,
       "malicious_actor_ids": [
         35,
         36,
@@ -207,44 +178,35 @@
         38,
         39,
         40,
-        41,
-        42
+        41
       ],
       "detected_actor_ids": [
-        35,
-        36,
         37,
         38,
-        39,
-        41,
-        42
+        39
       ],
       "false_detected_actor_ids": [],
       "time_to_detection_by_actor": {
-        "35": 2,
-        "36": 4,
-        "37": 4,
-        "38": 3,
-        "39": 7,
-        "41": 2,
-        "42": 0
+        "37": 104,
+        "38": 104,
+        "39": 0
       },
       "run": 5,
       "seed": 46
     },
     {
       "actor_precision": 1.0,
-      "actor_recall": 0.875,
-      "actor_f1": 0.9333333333333333,
-      "ttd_avg": 7.0,
-      "ttd_max": 20.0,
-      "confirmed_alerts": 35,
+      "actor_recall": 0.2857142857142857,
+      "actor_f1": 0.4444444444444445,
+      "ttd_avg": 25.0,
+      "ttd_max": 50.0,
+      "confirmed_alerts": 7,
       "confirmed_alert_precision": 1.0,
       "confirmed_fp_per_run": 0,
-      "actors_detected": 7,
-      "actors_total": 8,
+      "actors_detected": 2,
+      "actors_total": 7,
       "false_detected_actors": 0,
-      "tom_detections": 13,
+      "tom_detections": 0,
       "malicious_actor_ids": [
         35,
         36,
@@ -252,44 +214,33 @@
         38,
         39,
         40,
-        41,
-        42
+        41
       ],
       "detected_actor_ids": [
-        35,
-        36,
-        37,
         38,
-        39,
-        41,
-        42
+        41
       ],
       "false_detected_actor_ids": [],
       "time_to_detection_by_actor": {
-        "35": 2,
-        "36": 2,
-        "37": 3,
-        "38": 15,
-        "39": 20,
-        "41": 7,
-        "42": 0
+        "38": 50,
+        "41": 0
       },
       "run": 6,
       "seed": 47
     },
     {
       "actor_precision": 1.0,
-      "actor_recall": 0.875,
-      "actor_f1": 0.9333333333333333,
-      "ttd_avg": 5.142857142857143,
-      "ttd_max": 21.0,
-      "confirmed_alerts": 39,
+      "actor_recall": 0.2857142857142857,
+      "actor_f1": 0.4444444444444445,
+      "ttd_avg": 37.0,
+      "ttd_max": 54.0,
+      "confirmed_alerts": 37,
       "confirmed_alert_precision": 1.0,
       "confirmed_fp_per_run": 0,
-      "actors_detected": 7,
-      "actors_total": 8,
+      "actors_detected": 2,
+      "actors_total": 7,
       "false_detected_actors": 0,
-      "tom_detections": 13,
+      "tom_detections": 0,
       "malicious_actor_ids": [
         35,
         36,
@@ -297,44 +248,33 @@
         38,
         39,
         40,
-        41,
-        42
+        41
       ],
       "detected_actor_ids": [
-        35,
-        36,
-        37,
-        38,
         39,
-        41,
-        42
+        41
       ],
       "false_detected_actor_ids": [],
       "time_to_detection_by_actor": {
-        "35": 2,
-        "36": 5,
-        "37": 2,
-        "38": 21,
-        "39": 4,
-        "41": 2,
-        "42": 0
+        "39": 54,
+        "41": 20
       },
       "run": 7,
       "seed": 48
     },
     {
       "actor_precision": 1.0,
-      "actor_recall": 0.875,
-      "actor_f1": 0.9333333333333333,
-      "ttd_avg": 5.714285714285714,
-      "ttd_max": 19.0,
-      "confirmed_alerts": 34,
+      "actor_recall": 0.7142857142857143,
+      "actor_f1": 0.8333333333333333,
+      "ttd_avg": 35.2,
+      "ttd_max": 80.0,
+      "confirmed_alerts": 23,
       "confirmed_alert_precision": 1.0,
       "confirmed_fp_per_run": 0,
-      "actors_detected": 7,
-      "actors_total": 8,
+      "actors_detected": 5,
+      "actors_total": 7,
       "false_detected_actors": 0,
-      "tom_detections": 13,
+      "tom_detections": 0,
       "malicious_actor_ids": [
         35,
         36,
@@ -342,44 +282,39 @@
         38,
         39,
         40,
-        41,
-        42
+        41
       ],
       "detected_actor_ids": [
-        35,
-        36,
         37,
         38,
         39,
-        41,
-        42
+        40,
+        41
       ],
       "false_detected_actor_ids": [],
       "time_to_detection_by_actor": {
-        "35": 2,
-        "36": 2,
-        "37": 2,
-        "38": 19,
-        "39": 13,
-        "41": 2,
-        "42": 0
+        "37": 54,
+        "38": 16,
+        "39": 0,
+        "40": 80,
+        "41": 26
       },
       "run": 8,
       "seed": 49
     },
     {
-      "actor_precision": 1.0,
-      "actor_recall": 0.875,
-      "actor_f1": 0.9333333333333333,
-      "ttd_avg": 3.5714285714285716,
-      "ttd_max": 12.0,
-      "confirmed_alerts": 38,
-      "confirmed_alert_precision": 1.0,
+      "actor_precision": 0.0,
+      "actor_recall": 0.0,
+      "actor_f1": 0.0,
+      "ttd_avg": 0.0,
+      "ttd_max": 0.0,
+      "confirmed_alerts": 0,
+      "confirmed_alert_precision": 0.0,
       "confirmed_fp_per_run": 0,
-      "actors_detected": 7,
-      "actors_total": 8,
+      "actors_detected": 0,
+      "actors_total": 7,
       "false_detected_actors": 0,
-      "tom_detections": 13,
+      "tom_detections": 0,
       "malicious_actor_ids": [
         35,
         36,
@@ -387,44 +322,27 @@
         38,
         39,
         40,
-        41,
-        42
+        41
       ],
-      "detected_actor_ids": [
-        35,
-        36,
-        37,
-        38,
-        39,
-        41,
-        42
-      ],
+      "detected_actor_ids": [],
       "false_detected_actor_ids": [],
-      "time_to_detection_by_actor": {
-        "35": 2,
-        "36": 2,
-        "37": 3,
-        "38": 12,
-        "39": 4,
-        "41": 2,
-        "42": 0
-      },
+      "time_to_detection_by_actor": {},
       "run": 9,
       "seed": 50
     },
     {
       "actor_precision": 1.0,
-      "actor_recall": 0.875,
-      "actor_f1": 0.9333333333333333,
-      "ttd_avg": 4.714285714285714,
-      "ttd_max": 17.0,
-      "confirmed_alerts": 35,
+      "actor_recall": 0.5714285714285714,
+      "actor_f1": 0.7272727272727273,
+      "ttd_avg": 177.0,
+      "ttd_max": 258.0,
+      "confirmed_alerts": 23,
       "confirmed_alert_precision": 1.0,
       "confirmed_fp_per_run": 0,
-      "actors_detected": 7,
-      "actors_total": 8,
+      "actors_detected": 4,
+      "actors_total": 7,
       "false_detected_actors": 0,
-      "tom_detections": 13,
+      "tom_detections": 0,
       "malicious_actor_ids": [
         35,
         36,
@@ -432,56 +350,49 @@
         38,
         39,
         40,
-        41,
-        42
+        41
       ],
       "detected_actor_ids": [
-        35,
         36,
-        37,
-        38,
         39,
-        41,
-        42
+        40,
+        41
       ],
       "false_detected_actor_ids": [],
       "time_to_detection_by_actor": {
-        "35": 2,
-        "36": 2,
-        "37": 6,
-        "38": 17,
-        "39": 4,
-        "41": 2,
-        "42": 0
+        "36": 56,
+        "39": 164,
+        "40": 230,
+        "41": 258
       },
       "run": 10,
       "seed": 51
     }
   ],
   "average": {
-    "actor_precision": 1.0,
-    "actor_recall": 0.875,
-    "actor_f1": 0.9333333333333333,
-    "ttd_avg": 6.257142857142857,
-    "ttd_max": 24.6,
-    "confirmed_alerts": 35.5,
-    "confirmed_alert_precision": 1.0,
+    "actor_precision": 0.9,
+    "actor_recall": 0.41428571428571426,
+    "actor_f1": 0.5527272727272727,
+    "ttd_avg": 67.8,
+    "ttd_max": 140.0,
+    "confirmed_alerts": 19.0,
+    "confirmed_alert_precision": 0.9,
     "confirmed_fp_per_run": 0.0,
-    "actors_detected": 7.0,
-    "actors_total": 8.0,
+    "actors_detected": 2.9,
+    "actors_total": 7.0,
     "false_detected_actors": 0.0,
-    "tom_detections": 13.0
+    "tom_detections": 0.0
   },
   "std": {
-    "actor_precision": 0.0,
-    "actor_recall": 0.0,
-    "actor_f1": 0.0,
-    "ttd_avg": 2.6540688824243164,
-    "ttd_max": 15.226293048539425,
-    "confirmed_alerts": 2.5,
-    "confirmed_alert_precision": 0.0,
+    "actor_precision": 0.3,
+    "actor_recall": 0.20652617564001374,
+    "actor_f1": 0.2313725828941067,
+    "ttd_avg": 55.476753890455974,
+    "ttd_max": 123.12270302425951,
+    "confirmed_alerts": 10.178408519999577,
+    "confirmed_alert_precision": 0.3,
     "confirmed_fp_per_run": 0.0,
-    "actors_detected": 0.0,
+    "actors_detected": 1.445683229480096,
     "actors_total": 0.0,
     "false_detected_actors": 0.0,
     "tom_detections": 0.0

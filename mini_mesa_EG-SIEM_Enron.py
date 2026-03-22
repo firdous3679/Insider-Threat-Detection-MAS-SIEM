@@ -96,7 +96,9 @@ class CombinedForensicsAgent:
             self.classifier = data.get('classifier')
             self.classifier_accuracy = data.get('classifier_accuracy', 0.0)
             self.learned_phrase_weights = data.get('learned_phrase_weights', {})
-            
+
+            print("Classifier:", self.classifier)
+            print("Vectorizer:", self.vectorizer)
             print(f"Loaded combined forensics model from: {path}")
             print(f"  Classifier accuracy: {self.classifier_accuracy:.2%}")
             print(f"  Vocabulary size: {self.vocabulary_size:,}")
@@ -133,11 +135,13 @@ class CombinedForensicsAgent:
             matched = [weight for phrase, weight in self.learned_phrase_weights.items() if phrase in content_lower and weight > 0]
             if matched:
                 phrase_score = min(1.0, sum(matched) * 12.0)
-        ml_score = max(base_ml_score, phrase_score)
+       
+        ml_score = min(1.0, base_ml_score * 50)
         
         # 3. Combined phishing score
         if self.mode == "full" and self.classifier:
-            phishing_score = 0.7 * ml_score + 0.3 * keyword_score
+            #phishing_score = 0.9 * ml_score + 0.1 * keyword_score
+            phishing_score = max(ml_score, keyword_score)
         elif self.mode == "model_only":
             phishing_score = ml_score
         elif self.mode == "keyword_only":
@@ -165,7 +169,6 @@ class CombinedForensicsAgent:
         # Risk scores
         content_risk = phishing_score * 0.4 + style_anomaly * 0.2 + (1 - authorship) * 0.2 + urgency * 0.2
         combined_risk = (content_risk + phishing_score) / 2
-        
         return {
             "forensics_phishing_score": phishing_score,
             "forensics_ml_score": ml_score,
@@ -483,7 +486,27 @@ class BenignPowerUser(mesa.Agent):
                     "attachment_kb": self.model.random.randint(220, 2500), "content": "Scheduled partner report attached."}, label="benign"))
                 self.in_cycle, self.phase = False, 0
 
-
+MALICIOUS_TEMPLATES = [
+    "Confidential patient data. Confirm immediately.",
+    "Please share the dataset externally.",
+    "Upload the files to external storage.",
+    "Send the records to my personal email.",
+    "Transfer the data to outside system.",
+    "Forward this report externally.",
+    
+    # HARD (paraphrased – no obvious keywords)
+    "Can you make this accessible off-network?",
+    "I need to review this from home system",
+    "Let’s sync this outside for quick access",
+    "Share this with my alternate account",
+    "Move this to backup location",
+    "Provide access from remote endpoint"
+]
+MALICIOUS_DESTINATIONS = [
+    "external@outside",
+    "colleague@internal",
+    "partner0@approved.com",
+]
 class MaliciousInsider(mesa.Agent):
     def __init__(self, model, scenario, start_step, repeat_every=48):
         super().__init__(model)
@@ -493,6 +516,12 @@ class MaliciousInsider(mesa.Agent):
     def _ah(self, s): 
         h = s % 24
         return h < 7 or h > 19
+
+    def _sample_malicious_email(self):
+        dst = self.random.choice(MALICIOUS_DESTINATIONS)
+        attachment_kb = self.random.randint(0, 4000)
+        content = self.random.choice(MALICIOUS_TEMPLATES)
+        return dst, attachment_kb, content
 
     def act(self):
         if not getattr(self.model, "attack_enabled", True): 
@@ -516,8 +545,9 @@ class MaliciousInsider(mesa.Agent):
                     bytes=self.random.randint(80000, 260000), meta={"after_hours": ah}, label="malicious", scenario=self.scenario))
                 self.phase = 3
             elif self.phase == 3:
-                self.model.emit_action(Event(s, "email_send", self.unique_id, dst="external@outside",
-                    meta={"attachment_kb": self.random.randint(600, 4000), "content": "Confidential patient data. Confirm immediately.", "after_hours": ah},
+                dst, attachment_kb, content = self._sample_malicious_email()
+                self.model.emit_action(Event(s, "email_send", self.unique_id, dst=dst,
+                    meta={"attachment_kb": attachment_kb, "content": content, "after_hours": ah},
                     label="malicious", scenario=self.scenario))
                 self.phase = 4
         
@@ -529,8 +559,9 @@ class MaliciousInsider(mesa.Agent):
                 if self.random.random() < 0.08: 
                     self.phase = 3
             elif self.phase == 3:
-                self.model.emit_action(Event(s, "email_send", self.unique_id, dst="external@outside",
-                    meta={"attachment_kb": self.random.randint(300, 2500), "content": "Summary attached.", "after_hours": ah},
+                dst, attachment_kb, content = self._sample_malicious_email()
+                self.model.emit_action(Event(s, "email_send", self.unique_id, dst=dst,
+                    meta={"attachment_kb": attachment_kb, "content": content, "after_hours": ah},
                     label="malicious", scenario=self.scenario))
                 self.phase = 4
         
@@ -554,15 +585,17 @@ class MaliciousInsider(mesa.Agent):
                     label="malicious", scenario=self.scenario))
                 self.phase = 3
             elif self.phase == 3:
-                self.model.emit_action(Event(s, "email_send", self.unique_id, dst="external@outside",
-                    meta={"attachment_kb": self.random.randint(600, 4500), "content": "Private data. Do not share.", "after_hours": ah},
+                dst, attachment_kb, content = self._sample_malicious_email()
+                self.model.emit_action(Event(s, "email_send", self.unique_id, dst=dst,
+                    meta={"attachment_kb": attachment_kb, "content": content, "after_hours": ah},
                     label="malicious", scenario=self.scenario))
                 self.phase = 4
         
         elif self.scenario == "email_only":
             if self.random.random() < 0.2:
-                self.model.emit_action(Event(s, "email_send", self.unique_id, dst="external@outside",
-                    meta={"attachment_kb": self.random.randint(250, 2500), "content": "Confidential docs. Act now!", "after_hours": ah},
+                dst, attachment_kb, content = self._sample_malicious_email()
+                self.model.emit_action(Event(s, "email_send", self.unique_id, dst=dst,
+                    meta={"attachment_kb": attachment_kb, "content": content, "after_hours": ah},
                     label="malicious", scenario=self.scenario))
         
         if self.phase == 4 and self.repeat_every and (s - self.start_step) % self.repeat_every == 0 and s > self.start_step:
@@ -709,8 +742,9 @@ class SIEMAgent(mesa.Agent):
             rec = (ing.meta or {}).get("record", {})
             if not rec: 
                 continue
-            
-            if not (self._is_email_anchor(rec) or self._is_login_anchor(rec)):
+            # Evaluate all email records for forensics-primary experiments,
+            # but do not score non-email records here.
+            if rec.get("event_type") != "email_send":
                 continue
             
             recent = self.recent.get(u, [])[-self.cfg.window:]
@@ -801,7 +835,7 @@ class SIEMAgent(mesa.Agent):
             fc = self.forensics_cache.get(u, [])[-10:]
             if fc:
                 avg_phishing = np.mean([x.get("forensics_phishing_score", 0) for x in fc])
-                if avg_phishing > 0.3:
+                if avg_phishing > 0.20:
                     f["forensics_phishing"] = avg_phishing
         
         return f
@@ -1101,30 +1135,55 @@ Actor Detection:
 # ============================================================================
 # Main
 # ============================================================================
-
+import argparse
 if __name__ == "__main__":
-    import argparse
-    
     parser = argparse.ArgumentParser(description="EG-SIEM with Combined Enron Forensics")
-    parser.add_argument('--model', type=str, default='combined_forensics_model.pkl',
-                       help='Path to trained forensics model (default: combined_forensics_model.pkl)')
-    parser.add_argument('--runs', type=int, default=10, help='Number of simulation runs')
-    parser.add_argument('--steps', type=int, default=240, help='Steps per run')
-    parser.add_argument('--warmup', type=int, default=60, help='Warmup steps')
-    parser.add_argument('--results-json', type=str, default='results_eg_siem_enron_fixed.json', help='Where to save machine-readable results')
-    parser.add_argument('--forensics-mode', type=str, default='full', choices=sorted(CombinedForensicsAgent.MODES), help='full, keyword_only, model_only, or disabled')
-    parser.add_argument('--preset', type=str, default='full', choices=['full', 'forensics_primary'], help='Experiment preset')
-    
+    parser.add_argument(
+        "--model",
+        type=str,
+        default="combined_forensics_model.pkl",
+        help="Path to trained forensics model (default: combined_forensics_model.pkl)"
+    )
+    parser.add_argument("--runs", type=int, default=10, help="Number of simulation runs")
+    parser.add_argument("--steps", type=int, default=240, help="Steps per run")
+    parser.add_argument("--warmup", type=int, default=60, help="Warmup steps")
+    parser.add_argument(
+        "--results-json",
+        type=str,
+        default="results_eg_siem_enron_fixed.json",
+        help="Where to save machine-readable results"
+    )
+    parser.add_argument(
+        "--forensics-mode",
+        type=str,
+        default="full",
+        choices=sorted(CombinedForensicsAgent.MODES),
+        help="full, keyword_only, model_only, or disabled"
+    )
+    parser.add_argument(
+        "--preset",
+        type=str,
+        default="full",
+        choices=["full", "forensics_primary"],
+        help="Experiment preset"
+    )
+
     args = parser.parse_args()
-    
-    # Check if model exists
+
     model_path = args.model if os.path.exists(args.model) else None
-    
+
     print()
-    print("╔" + "═"*68 + "╗")
+    print("╔" + "═" * 68 + "╗")
     print("║" + " INSIDER THREAT DETECTION - EG-SIEM + ENRON FORENSICS ".center(68) + "║")
-    print("╚" + "═"*68 + "╝")
+    print("╚" + "═" * 68 + "╝")
     print()
-    
-    run_experiment(T=args.steps, warmup=args.warmup, runs=args.runs, 
-                   forensics_model_path=model_path, results_path=args.results_json, forensics_mode=args.forensics_mode, preset=args.preset)
+
+    run_experiment(
+        T=args.steps,
+        warmup=args.warmup,
+        runs=args.runs,
+        forensics_model_path=model_path,
+        results_path=args.results_json,
+        forensics_mode=args.forensics_mode,
+        preset=args.preset,
+    )
