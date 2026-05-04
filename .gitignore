@@ -1,0 +1,9 @@
+data/
+cert_data/
+cert_r5.2/
+*.tar.bz2
+*.zip
+results/cert_r52/
+
+__pycache__/
+*.pyc
