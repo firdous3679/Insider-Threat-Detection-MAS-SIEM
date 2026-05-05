@@ -88,6 +88,12 @@ def _load_ldap(data_dir: Path) -> pd.DataFrame:
 def _load_answers(data_dir: Path) -> pd.DataFrame:
     answers_dir = data_dir / "answers"
     if not answers_dir.exists():
+        alt = data_dir / "Answers"
+        if alt.exists():
+            answers_dir = alt
+        else:
+            _warn(f"Missing answers directory: {answers_dir}")
+            return pd.DataFrame()
         _warn(f"Missing answers directory: {answers_dir}")
         return pd.DataFrame()
     frames = []

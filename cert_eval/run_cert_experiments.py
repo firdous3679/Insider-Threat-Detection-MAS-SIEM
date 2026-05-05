@@ -29,16 +29,23 @@ def main():
     ap.add_argument('--output_dir', default='results/cert_r52')
     ap.add_argument('--max_users', type=int, default=2000)
     ap.add_argument('--random_seed', type=int, default=42)
+    ap.add_argument('--write_normalized_events', action='store_true', help='Write cert_normalized_events.csv (can be large).')
+    ap.add_argument('--sort_normalized_events', action='store_true', help='Sort normalized events by timestamp before writing.')
     args=ap.parse_args()
 
     out=Path(args.output_dir); out.mkdir(parents=True, exist_ok=True)
     bundle=load_cert_data(args.data_dir)
-    events=build_normalized_events(bundle)
-    events.to_csv(out/'cert_normalized_events.csv', index=False)
+    print('[CERT-RUNNER] Loaded CERT tables. Building user-day features...')
+    events = build_normalized_events(bundle, sort_events=args.sort_normalized_events)
+    if args.write_normalized_events:
+        events.to_csv(out/'cert_normalized_events.csv', index=False)
+        print('[CERT-RUNNER] Wrote cert_normalized_events.csv')
 
     feats=build_user_day_features(bundle, out)
+    print('[CERT-RUNNER] Wrote cert_user_day_features.csv')
     labeled=build_labels(feats, bundle.answers, out)
     labeled=labeled.sort_values(['user','day']).reset_index(drop=True)
+    print('[CERT-RUNNER] Wrote cert_user_day_labeled.csv')
 
     baseline_df=run_baselines(labeled, random_seed=args.random_seed)
     baseline_df.to_csv(out/'baseline_results.csv', index=False)
