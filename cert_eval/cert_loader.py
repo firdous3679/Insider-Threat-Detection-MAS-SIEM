@@ -94,6 +94,8 @@ def _load_answers(data_dir: Path) -> pd.DataFrame:
         else:
             _warn(f"Missing answers directory: {answers_dir}")
             return pd.DataFrame()
+        _warn(f"Missing answers directory: {answers_dir}")
+        return pd.DataFrame()
     frames = []
     for f in sorted(answers_dir.glob("*.csv")):
         try:

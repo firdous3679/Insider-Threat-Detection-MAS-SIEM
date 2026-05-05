@@ -59,6 +59,7 @@ def build_user_day_features(bundle, output_dir: str | Path) -> pd.DataFrame:
     if not email.empty:
         to_series = email.get("to", pd.Series(dtype=str)).fillna("")
         email["external"] = to_series.str.contains("@") & ~to_series.str.contains("@dtaa\\.com", case=False, regex=True)
+        email["external"] = to_series.str.contains("@") & ~to_series.str.contains("@dtaa\.com", case=False, regex=True)
         email["has_attachment"] = email.get("attachments", "").astype(str).str.lower().ne("")
         email["recipient_count"] = to_series.apply(lambda s: len([x for x in str(s).split(";") if x.strip()]))
     feats = feats.merge(add_count(email, "email_sent_count"), on=["user","day"], how="left")
