@@ -13,6 +13,36 @@ from cert_eval.cert_scalability import run_scalability
 from cert_eval.cert_metrics import compute_classification_metrics, summarize_statistics, create_plots
 
 
+def _subset_bundle_users(bundle, max_users: int):
+    """Down-select loaded CERT tables to at most max_users before heavy feature joins.
+
+    This makes --max_users effective early, reducing memory/runtime for local runs.
+    """
+    if max_users <= 0:
+        return bundle
+
+    user_pool = []
+    if not bundle.logon.empty and 'user' in bundle.logon.columns:
+        user_pool = bundle.logon['user'].dropna().astype(str).unique().tolist()
+    else:
+        for name in ['device', 'file', 'http', 'email']:
+            df = getattr(bundle, name)
+            if not df.empty and 'user' in df.columns:
+                user_pool.extend(df['user'].dropna().astype(str).unique().tolist())
+
+    selected_users = set(user_pool[:max_users])
+    if not selected_users:
+        return bundle
+
+    for name in ['logon', 'device', 'file', 'http', 'email', 'answers']:
+        df = getattr(bundle, name)
+        if not df.empty and 'user' in df.columns:
+            setattr(bundle, name, df[df['user'].astype(str).isin(selected_users)].copy())
+    if not bundle.ldap.empty and 'user' in bundle.ldap.columns:
+        bundle.ldap = bundle.ldap[bundle.ldap['user'].astype(str).isin(selected_users)].copy()
+    return bundle
+
+
 def _evaluate_method(df, method, pred_col='pred_alert', score_col='risk_score'):
     y=df['user_day_label'].astype(int)
     pred=df[pred_col].astype(int)
@@ -35,6 +65,7 @@ def main():
 
     out=Path(args.output_dir); out.mkdir(parents=True, exist_ok=True)
     bundle=load_cert_data(args.data_dir)
+    bundle=_subset_bundle_users(bundle, args.max_users)
     print('[CERT-RUNNER] Loaded CERT tables. Building user-day features...')
     events = build_normalized_events(bundle, sort_events=args.sort_normalized_events)
     if args.write_normalized_events:
