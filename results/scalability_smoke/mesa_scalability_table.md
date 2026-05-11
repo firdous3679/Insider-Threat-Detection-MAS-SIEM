@@ -1,0 +1,3 @@
+| agent_count_human | simulation_steps | mean_runtime_seconds | mean_peak_memory_mb | mean_events_generated | mean_events_per_second | mean_actor_f1 | mean_confirmed_alerts | mean_confirmed_false_positives | completed_runs | failed_runs |
+| ----------------- | ---------------- | -------------------- | ------------------- | --------------------- | ---------------------- | ------------- | --------------------- | ------------------------------ | -------------- | ----------- |
+| 42                | 5                | 0.592                | 0.781               | 62.000                | 104.810                | 0.000         | 0.000                 | 0.000                          | 1              | 0           |

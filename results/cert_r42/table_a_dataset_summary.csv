@@ -1,0 +1,2 @@
+Dataset,Users,Duration,Modalities,Insider scenarios,Evaluation unit,Purpose in this paper
+CERT r4.2,1000,501 days,logon/device/file/http/email/LDAP,3,user-day,External benchmark generalization

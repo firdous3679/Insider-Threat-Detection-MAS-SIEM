@@ -1,0 +1,2 @@
+agent_count_human,simulation_steps,completed_runs,failed_runs,mean_runtime_seconds,std_runtime_seconds,mean_peak_memory_mb,std_peak_memory_mb,mean_actor_f1,std_actor_f1,mean_events_generated,mean_events_per_second,mean_confirmed_alerts,mean_confirmed_false_positives,mean_ttd_avg_steps,mean_ttd_max_steps
+42,5,1,0,0.591548791002424,0.0,0.7809085845947266,0.0,0.0,0.0,62.0,104.8096132441355,0.0,0.0,0.0,0.0

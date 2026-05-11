@@ -1,0 +1,4 @@
+corpus_name,total_emails,positive_count,negative_count,positive_rate,average_body_word_count,median_body_word_count,number_of_categories,number_of_subcategories,number_of_templates,number_of_template_families,hard_negative_count,emails_with_attachment,emails_with_external_link
+municipal_v1,1000,150,850,0.15,62.844,59.0,5,32,,,,,
+municipal_v2,2000,300,1700,0.15,50.479,47.0,7,26,109.0,26.0,300.0,573.0,234.0
+kurdi_smart_building,140,100,40,0.7142857142857143,13.192857142857143,10.5,47,47,,,,,

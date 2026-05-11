@@ -1,0 +1,401 @@
+setting,score,predicted_positive,subject,template_id,template_family,approval_context,expected_detection_signal,text
+enron_zero_shot_enron_threshold,0.005872041523326113,0,[WO-98922] Approved password reset - internal ticket WO-98922,HAR-LEGI-02,legitimate_password_reset,approved,remote_access,"[WO-98922] Approved password reset - internal ticket WO-98922
+
+Hi Tyrone,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved by procurement; ticket WO-98922; building Traffic Management Center; asset VAV-102; zone elevator machine room. The request may mention log export, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Leah Kim
+Vendor Coordinator"
+enron_zero_shot_enron_threshold,0.005852101366642189,0,Procurement-approved invoice/banking update - BMS-10732,HAR-APPR-03,approved_invoice_banking_update,approved,payment_change,"Procurement-approved invoice/banking update - BMS-10732
+
+Hi James,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket BMS-10732; building Community Center East; asset B-2; zone basement mechanical. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Ian McCarthy
+Energy Analyst"
+enron_zero_shot_enron_threshold,0.0051906812470437986,0,Approved emergency alarm testing - Community Center West,HAR-APPR-04,approved_emergency_alarm_testing,approved,policy_bypass,"Approved emergency alarm testing - Community Center West
+
+Hi Noah,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket WO-42536; building Community Center West; asset CTRL-204; zone roof penthouse. The request may mention remote support, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after vendor disconnects. No external payment portal or off-ticket credential collection is authorized.
+
+Amir Hassan
+Security Systems Admin"
+enron_zero_shot_enron_threshold,0.005004873631911343,0,Follow-up: Approved log export for compliance audit - FAC-89397,HAR-APPR-02,approved_log_export_audit,approved,remote_access,"Follow-up: Approved log export for compliance audit - FAC-89397
+
+Hi Mina,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: logged in the audit register; ticket FAC-89397; building Permit Center; asset VAV-121; zone elevator machine room. The request may mention alarm testing, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+James O'Brien
+BMS Operator"
+enron_zero_shot_enron_threshold,0.004910069806552923,0,RE: Approved firmware update - CTRL-205,HAR-APPR-01,approved_firmware_update,approved,credential_request,"RE: Approved firmware update - CTRL-205
+
+Hi David,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: authorized under maintenance ticket; ticket FAC-97079; building Traffic Management Center; asset CTRL-205; zone server room. The request may mention log export, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after vendor disconnects. No external payment portal or off-ticket credential collection is authorized.
+
+Olivia Brown
+Compliance Analyst"
+enron_zero_shot_enron_threshold,0.004887678457372967,0,Follow-up: Approved log export for compliance audit - BMS-25196,HAR-APPR-04,approved_log_export_audit,approved,policy_bypass,"Follow-up: Approved log export for compliance audit - BMS-25196
+
+Hi Priya,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket BMS-25196; building Senior Center; asset VAV-201; zone training room A. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Leah Kim
+Vendor Coordinator"
+enron_zero_shot_enron_threshold,0.00484608065628812,0,Follow-up: Approved password reset - internal ticket AUD-36670,HAR-LEGI-01,legitimate_password_reset,approved,credential_request,"Follow-up: Approved password reset - internal ticket AUD-36670
+
+Hi Fatima,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket AUD-36670; building Traffic Management Center; asset AHU-2; zone elevator machine room. The request may mention remote support, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after vendor disconnects. No external payment portal or off-ticket credential collection is authorized.
+
+Lin Zhao
+Facilities IT Liaison"
+enron_zero_shot_enron_threshold,0.0047931610606832525,0,[FAC-12153] Approved vendor VPN access - FAC-12153,HAR-APPR-03,approved_vendor_vpn,approved,payment_change,"[FAC-12153] Approved vendor VPN access - FAC-12153
+
+Hi James,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket FAC-12153; building Recreation Center; asset CTRL-208; zone council chambers. The request may mention banking update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Noah Davis
+OT Network Engineer"
+enron_zero_shot_enron_threshold,0.004785191896874173,0,Approved remote support session - Traffic Management Center,HAR-APPR-02,approved_remote_support,approved,remote_access,"Approved remote support session - Traffic Management Center
+
+Hi Nora,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved in Change Advisory Board; ticket WO-21608; building Traffic Management Center; asset RTU-6; zone server room. The request may mention log export, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: end of maintenance window. No external payment portal or off-ticket credential collection is authorized.
+
+Priya Patel
+Controls Technician"
+enron_zero_shot_enron_threshold,0.004736419112592372,0,Approved remote support session - Traffic Management Center,HAR-APPR-03,approved_remote_support,approved,payment_change,"Approved remote support session - Traffic Management Center
+
+Hi Paula,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: validated against the vendor roster; ticket AUD-38983; building Traffic Management Center; asset VAV-114; zone server room. The request may mention policy exception, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Anna Kowalski
+Building Engineer"
+enron_zero_shot_target_calibrated_threshold,0.005872041523326113,1,[WO-98922] Approved password reset - internal ticket WO-98922,HAR-LEGI-02,legitimate_password_reset,approved,remote_access,"[WO-98922] Approved password reset - internal ticket WO-98922
+
+Hi Tyrone,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved by procurement; ticket WO-98922; building Traffic Management Center; asset VAV-102; zone elevator machine room. The request may mention log export, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Leah Kim
+Vendor Coordinator"
+enron_zero_shot_target_calibrated_threshold,0.005852101366642189,1,Procurement-approved invoice/banking update - BMS-10732,HAR-APPR-03,approved_invoice_banking_update,approved,payment_change,"Procurement-approved invoice/banking update - BMS-10732
+
+Hi James,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket BMS-10732; building Community Center East; asset B-2; zone basement mechanical. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Ian McCarthy
+Energy Analyst"
+enron_zero_shot_target_calibrated_threshold,0.0051906812470437986,1,Approved emergency alarm testing - Community Center West,HAR-APPR-04,approved_emergency_alarm_testing,approved,policy_bypass,"Approved emergency alarm testing - Community Center West
+
+Hi Noah,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket WO-42536; building Community Center West; asset CTRL-204; zone roof penthouse. The request may mention remote support, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after vendor disconnects. No external payment portal or off-ticket credential collection is authorized.
+
+Amir Hassan
+Security Systems Admin"
+enron_zero_shot_target_calibrated_threshold,0.005004873631911343,1,Follow-up: Approved log export for compliance audit - FAC-89397,HAR-APPR-02,approved_log_export_audit,approved,remote_access,"Follow-up: Approved log export for compliance audit - FAC-89397
+
+Hi Mina,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: logged in the audit register; ticket FAC-89397; building Permit Center; asset VAV-121; zone elevator machine room. The request may mention alarm testing, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+James O'Brien
+BMS Operator"
+enron_zero_shot_target_calibrated_threshold,0.004910069806552923,1,RE: Approved firmware update - CTRL-205,HAR-APPR-01,approved_firmware_update,approved,credential_request,"RE: Approved firmware update - CTRL-205
+
+Hi David,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: authorized under maintenance ticket; ticket FAC-97079; building Traffic Management Center; asset CTRL-205; zone server room. The request may mention log export, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after vendor disconnects. No external payment portal or off-ticket credential collection is authorized.
+
+Olivia Brown
+Compliance Analyst"
+enron_zero_shot_target_calibrated_threshold,0.004887678457372967,1,Follow-up: Approved log export for compliance audit - BMS-25196,HAR-APPR-04,approved_log_export_audit,approved,policy_bypass,"Follow-up: Approved log export for compliance audit - BMS-25196
+
+Hi Priya,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket BMS-25196; building Senior Center; asset VAV-201; zone training room A. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Leah Kim
+Vendor Coordinator"
+enron_zero_shot_target_calibrated_threshold,0.00484608065628812,1,Follow-up: Approved password reset - internal ticket AUD-36670,HAR-LEGI-01,legitimate_password_reset,approved,credential_request,"Follow-up: Approved password reset - internal ticket AUD-36670
+
+Hi Fatima,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket AUD-36670; building Traffic Management Center; asset AHU-2; zone elevator machine room. The request may mention remote support, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after vendor disconnects. No external payment portal or off-ticket credential collection is authorized.
+
+Lin Zhao
+Facilities IT Liaison"
+enron_zero_shot_target_calibrated_threshold,0.0047931610606832525,1,[FAC-12153] Approved vendor VPN access - FAC-12153,HAR-APPR-03,approved_vendor_vpn,approved,payment_change,"[FAC-12153] Approved vendor VPN access - FAC-12153
+
+Hi James,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket FAC-12153; building Recreation Center; asset CTRL-208; zone council chambers. The request may mention banking update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Noah Davis
+OT Network Engineer"
+enron_zero_shot_target_calibrated_threshold,0.004785191896874173,1,Approved remote support session - Traffic Management Center,HAR-APPR-02,approved_remote_support,approved,remote_access,"Approved remote support session - Traffic Management Center
+
+Hi Nora,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved in Change Advisory Board; ticket WO-21608; building Traffic Management Center; asset RTU-6; zone server room. The request may mention log export, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: end of maintenance window. No external payment portal or off-ticket credential collection is authorized.
+
+Priya Patel
+Controls Technician"
+enron_zero_shot_target_calibrated_threshold,0.004736419112592372,1,Approved remote support session - Traffic Management Center,HAR-APPR-03,approved_remote_support,approved,payment_change,"Approved remote support session - Traffic Management Center
+
+Hi Paula,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: validated against the vendor roster; ticket AUD-38983; building Traffic Management Center; asset VAV-114; zone server room. The request may mention policy exception, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Anna Kowalski
+Building Engineer"
+fine_tuned_random_split_hard_negative_holdout,0.00786722820534671,0,Procurement-approved invoice/banking update - BMS-10732,HAR-APPR-03,approved_invoice_banking_update,approved,payment_change,"Procurement-approved invoice/banking update - BMS-10732
+
+Hi James,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket BMS-10732; building Community Center East; asset B-2; zone basement mechanical. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Ian McCarthy
+Energy Analyst"
+fine_tuned_random_split_hard_negative_holdout,0.007116665889947732,0,Approved temporary security exception - expires tonight,HAR-APPR-01,approved_temporary_security_exception,approved,credential_request,"Approved temporary security exception - expires tonight
+
+Hi Leah,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: covered by existing master service agreement; ticket CHG-24044; building Senior Center; asset RTU-7; zone south mechanical chase. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: 22:00 tonight. No external payment portal or off-ticket credential collection is authorized.
+
+Diego Hernandez
+Security Coordinator"
+fine_tuned_random_split_hard_negative_holdout,0.007092268837238375,0,[AUD-45644] Procurement-approved invoice/banking update - AUD-45644,HAR-APPR-01,approved_invoice_banking_update,approved,credential_request,"[AUD-45644] Procurement-approved invoice/banking update - AUD-45644
+
+Hi Andre,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: authorized under maintenance ticket; ticket AUD-45644; building Community Center East; asset CTRL-201; zone south mechanical chase. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: end of maintenance window. No external payment portal or off-ticket credential collection is authorized.
+
+Rachel Stein
+Audit Coordinator"
+fine_tuned_random_split_hard_negative_holdout,0.007007242839203435,0,RE: Approved firmware update - VAV-201,HAR-APPR-02,approved_firmware_update,approved,remote_access,"RE: Approved firmware update - VAV-201
+
+Hi Mateo,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: logged in the audit register; ticket FAC-21325; building Youth Services Center; asset VAV-201; zone basement mechanical. The request may mention policy exception, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: end of maintenance window. No external payment portal or off-ticket credential collection is authorized.
+
+James O'Brien
+BMS Operator"
+fine_tuned_random_split_hard_negative_holdout,0.006571910312110172,0,Approved firmware update - CTRL-205,HAR-APPR-04,approved_firmware_update,approved,policy_bypass,"Approved firmware update - CTRL-205
+
+Hi Julia,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket AUD-29747; building Central Library; asset CTRL-205; zone loading dock. The request may mention remote support, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Ethan Brooks
+Safety Officer"
+fine_tuned_random_split_hard_negative_holdout,0.00640129335868078,0,RE: Approved firmware update - AHU-1,HAR-APPR-02,approved_firmware_update,approved,remote_access,"RE: Approved firmware update - AHU-1
+
+Hi Rachel,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved for this window only; ticket FAC-86177; building Fire Station 1; asset AHU-1; zone north stairwell. The request may mention policy exception, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: end of maintenance window. No external payment portal or off-ticket credential collection is authorized.
+
+Jennifer Park
+Procurement Officer"
+fine_tuned_random_split_hard_negative_holdout,0.006359950870777794,0,RE: Approved temporary security exception - expires tonight,HAR-APPR-03,approved_temporary_security_exception,approved,payment_change,"RE: Approved temporary security exception - expires tonight
+
+Hi Anna,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved by procurement; ticket FAC-68091; building Central Library; asset RTU-3; zone kitchen. The request may mention banking update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Jennifer Park
+Procurement Officer"
+fine_tuned_random_split_hard_negative_holdout,0.006176980662584781,0,Follow-up: Approved remote support session - Recreation Center,HAR-APPR-03,approved_remote_support,approved,payment_change,"Follow-up: Approved remote support session - Recreation Center
+
+Hi Tyrone,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved for this window only; ticket FAC-33862; building Recreation Center; asset CTRL-215; zone training room A. The request may mention remote support, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Mina Kapoor
+Asset Manager"
+fine_tuned_random_split_hard_negative_holdout,0.006085594271121096,0,[AUD-68578] Approved firmware update - RTU-6,HAR-APPR-04,approved_firmware_update,approved,policy_bypass,"[AUD-68578] Approved firmware update - RTU-6
+
+Hi Leah,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: covered by existing master service agreement; ticket AUD-68578; building Recreation Center; asset RTU-6; zone server room. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: end of maintenance window. No external payment portal or off-ticket credential collection is authorized.
+
+Grace Miller
+Facilities Dispatcher"
+fine_tuned_random_split_hard_negative_holdout,0.006064920434143052,0,RE: Approved firmware update - CTRL-205,HAR-APPR-01,approved_firmware_update,approved,credential_request,"RE: Approved firmware update - CTRL-205
+
+Hi David,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: authorized under maintenance ticket; ticket FAC-97079; building Traffic Management Center; asset CTRL-205; zone server room. The request may mention log export, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after vendor disconnects. No external payment portal or off-ticket credential collection is authorized.
+
+Olivia Brown
+Compliance Analyst"
+fine_tuned_grouped_template_family_hard_negative_holdout,0.009567646890943481,1,RE: Approved temporary security exception - expires tonight,HAR-APPR-01,approved_temporary_security_exception,approved,credential_request,"RE: Approved temporary security exception - expires tonight
+
+Hi Rachel,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: reviewed by security; ticket CHG-78779; building Traffic Management Center; asset AHU-15; zone 3rd floor admin offices. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: end of maintenance window. No external payment portal or off-ticket credential collection is authorized.
+
+Ethan Brooks
+Safety Officer"
+fine_tuned_grouped_template_family_hard_negative_holdout,0.008784582658879514,1,[BMS-35128] Approved log export for compliance audit - BMS-35128,HAR-APPR-01,approved_log_export_audit,approved,credential_request,"[BMS-35128] Approved log export for compliance audit - BMS-35128
+
+Hi Maria,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved for this window only; ticket BMS-35128; building Water Treatment Plant 1; asset AHU-17; zone evidence storage. The request may mention remote support, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: end of maintenance window. No external payment portal or off-ticket credential collection is authorized.
+
+James O'Brien
+BMS Operator"
+fine_tuned_grouped_template_family_hard_negative_holdout,0.008380188719144178,1,Follow-up: Approved temporary security exception - expires tonight,HAR-APPR-02,approved_temporary_security_exception,approved,remote_access,"Follow-up: Approved temporary security exception - expires tonight
+
+Hi Priya,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved for this window only; ticket CHG-56882; building Transit Operations Building; asset AHU-4; zone dispatch floor. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Sofia Rossi
+Mechanical Engineer"
+fine_tuned_grouped_template_family_hard_negative_holdout,0.00790487283459098,0,[BMS-42433] Approved temporary security exception - expires tonight,HAR-APPR-02,approved_temporary_security_exception,approved,remote_access,"[BMS-42433] Approved temporary security exception - expires tonight
+
+Hi Thomas,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: authorized under maintenance ticket; ticket BMS-42433; building Water Treatment Plant 2; asset AHU-2; zone loading dock. The request may mention banking update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after vendor disconnects. No external payment portal or off-ticket credential collection is authorized.
+
+Elena Petrova
+Access Control Specialist"
+fine_tuned_grouped_template_family_hard_negative_holdout,0.007828750045751688,0,Approved emergency alarm testing - Community Center West,HAR-APPR-04,approved_emergency_alarm_testing,approved,policy_bypass,"Approved emergency alarm testing - Community Center West
+
+Hi Noah,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket WO-42536; building Community Center West; asset CTRL-204; zone roof penthouse. The request may mention remote support, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after vendor disconnects. No external payment portal or off-ticket credential collection is authorized.
+
+Amir Hassan
+Security Systems Admin"
+fine_tuned_grouped_template_family_hard_negative_holdout,0.007809854646702688,0,Approved temporary security exception - expires tonight,HAR-APPR-01,approved_temporary_security_exception,approved,credential_request,"Approved temporary security exception - expires tonight
+
+Hi Sofia,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: reviewed by security; ticket WO-56498; building Operations Annex; asset VAV-210; zone basement mechanical. The request may mention remote support, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Ethan Brooks
+Safety Officer"
+fine_tuned_grouped_template_family_hard_negative_holdout,0.007766166301326685,0,Follow-up: Approved temporary security exception - expires tonight,HAR-APPR-04,approved_temporary_security_exception,approved,policy_bypass,"Follow-up: Approved temporary security exception - expires tonight
+
+Hi Ava,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved for this window only; ticket BMS-79711; building Parking Authority Office; asset AHU-8; zone public counter. The request may mention firmware update, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: 22:00 tonight. No external payment portal or off-ticket credential collection is authorized.
+
+Lin Zhao
+Facilities IT Liaison"
+fine_tuned_grouped_template_family_hard_negative_holdout,0.0076841260028940855,0,Follow-up: Approved temporary security exception - expires tonight,HAR-APPR-03,approved_temporary_security_exception,approved,payment_change,"Follow-up: Approved temporary security exception - expires tonight
+
+Hi Sarah,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved for this window only; ticket BMS-39923; building Municipal Court; asset B-4; zone south mechanical chase. The request may mention policy exception, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: end of maintenance window. No external payment portal or off-ticket credential collection is authorized.
+
+Noah Davis
+OT Network Engineer"
+fine_tuned_grouped_template_family_hard_negative_holdout,0.00764886581195512,0,RE: Approved temporary security exception - expires tonight,HAR-APPR-03,approved_temporary_security_exception,approved,payment_change,"RE: Approved temporary security exception - expires tonight
+
+Hi Fatima,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: reviewed by security; ticket BMS-95518; building Police Headquarters; asset VAV-102; zone south mechanical chase. The request may mention policy exception, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: end of maintenance window. No external payment portal or off-ticket credential collection is authorized.
+
+Owen Clark
+Maintenance Planner"
+fine_tuned_grouped_template_family_hard_negative_holdout,0.007338221513933164,0,RE: Approved temporary security exception - expires tonight,HAR-APPR-01,approved_temporary_security_exception,approved,credential_request,"RE: Approved temporary security exception - expires tonight
+
+Hi David,
+
+This message contains suspicious-looking operational terms, but it is a legitimate approved workflow. Context: approved with expiration time; ticket WO-80073; building Water Treatment Plant 2; asset VAV-201; zone 3rd floor admin offices. The request may mention password reset, but it is limited to the approved window and documented in the city change record.
+
+Expiration/rollback: after audit export completes. No external payment portal or off-ticket credential collection is authorized.
+
+Samir Khan
+Change Manager"

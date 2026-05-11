@@ -1,0 +1,2 @@
+dataset,experiment,threshold,precision,recall,F1,ROC-AUC,PR-AUC,predicted_positive_rate,grouping_column,number_of_train_groups,number_of_test_groups,shared_group_count,split_strategy,split_note,train_size,test_size
+municipal_v2,fine_tuned_grouped_by_subcategory,0.008,0.9491525423728814,1.0,0.9739130434782609,1.0,1.0000000000000002,0.15526315789473685,subcategory,20,6,0,strict_grouped_split,,1620,380

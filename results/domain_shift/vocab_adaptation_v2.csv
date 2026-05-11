@@ -1,0 +1,5 @@
+dataset,experiment,threshold,precision,recall,F1,ROC-AUC,PR-AUC,predicted_positive_rate,feature_set
+municipal_v2,zero_shot_tfidf_only,0.98,0.0,0.0,0.0,0.44621960784313724,0.12796168206317396,0.0,tfidf_only
+municipal_v2,zero_shot_original_keywords,0.98,0.0,0.0,0.0,0.07768627450980392,0.08208968669045226,0.0,original_keywords
+municipal_v2,zero_shot_exfil_aligned_keywords,0.98,0.0,0.0,0.0,0.11488627450980393,0.08497565431944143,0.0,exfil_aligned_keywords
+municipal_v2,zero_shot_municipal_security_ops_keywords,0.98,0.0,0.0,0.0,0.23808039215686275,0.09488810857369126,0.0,municipal_security_ops_keywords

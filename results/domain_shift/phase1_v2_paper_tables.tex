@@ -1,0 +1,116 @@
+% Corpus Summary
+
+\begin{tabular}{llllllllllllll}
+\hline
+corpus\_name & total\_emails & positive\_count & negative\_count & positive\_rate & average\_body\_word\_count & median\_body\_word\_count & number\_of\_categories & number\_of\_subcategories & number\_of\_templates & number\_of\_template\_families & hard\_negative\_count & emails\_with\_attachment & emails\_with\_external\_link \\
+\hline
+municipal\_v1 & 1000 & 150 & 850 & 0.150 & 62.844 & 59.000 & 5 & 32 &  &  &  &  &  \\
+municipal\_v2 & 2000 & 300 & 1700 & 0.150 & 50.479 & 47.000 & 7 & 26 & 109.000 & 26.000 & 300.000 & 573.000 & 234.000 \\
+kurdi\_smart\_building & 140 & 100 & 40 & 0.714 & 13.193 & 10.500 & 47 & 47 &  &  &  &  &  \\
+\hline
+\end{tabular}
+
+
+% Zero-Shot Transfer
+
+\begin{tabular}{lllllllll}
+\hline
+dataset & experiment & threshold & precision & recall & F1 & ROC-AUC & PR-AUC & predicted\_positive\_rate \\
+\hline
+municipal\_v1 & zero\_shot\_enron & 0.980 & 0.000 & 0.000 & 0.000 & 0.587 & 0.188 & 0.000 \\
+municipal\_v2 & zero\_shot\_enron & 0.980 & 0.000 & 0.000 & 0.000 & 0.446 & 0.128 & 0.000 \\
+kurdi\_smart\_building & zero\_shot\_enron & 0.980 & 0.000 & 0.000 & 0.000 & 0.632 & 0.803 & 0.000 \\
+\hline
+\end{tabular}
+
+
+% Threshold Sensitivity
+
+\begin{tabular}{lllllllll}
+\hline
+dataset & threshold\_name & threshold\_value & precision & recall & F1 & predicted\_positive\_rate & ROC-AUC & PR-AUC \\
+\hline
+municipal\_v1 & enron\_f1\_optimized & 0.980 & 0.000 & 0.000 & 0.000 & 0.000 & 0.587 & 0.188 \\
+municipal\_v1 & default\_0\_50 & 0.500 & 0.000 & 0.000 & 0.000 & 0.000 & 0.587 & 0.188 \\
+municipal\_v1 & mesa\_runtime\_0\_002 & 0.002 & 0.150 & 1.000 & 0.261 & 1.000 & 0.587 & 0.188 \\
+municipal\_v1 & target\_oracle\_best\_f1\_upper\_bound & 0.004 & 0.191 & 0.740 & 0.304 & 0.580 & 0.587 & 0.188 \\
+municipal\_v1 & target\_calibrated\_heldout & 0.004 & 0.168 & 0.667 & 0.269 & 0.594 & 0.528 & 0.168 \\
+municipal\_v2 & enron\_f1\_optimized & 0.980 & 0.000 & 0.000 & 0.000 & 0.000 & 0.446 & 0.128 \\
+municipal\_v2 & default\_0\_50 & 0.500 & 0.000 & 0.000 & 0.000 & 0.000 & 0.446 & 0.128 \\
+municipal\_v2 & mesa\_runtime\_0\_002 & 0.002 & 0.150 & 1.000 & 0.261 & 1.000 & 0.446 & 0.128 \\
+municipal\_v2 & target\_oracle\_best\_f1\_upper\_bound & 0.003 & 0.155 & 0.983 & 0.268 & 0.953 & 0.446 & 0.128 \\
+municipal\_v2 & target\_calibrated\_heldout & 0.003 & 0.151 & 0.953 & 0.261 & 0.944 & 0.445 & 0.128 \\
+kurdi\_smart\_building & enron\_f1\_optimized & 0.980 & 0.000 & 0.000 & 0.000 & 0.000 & 0.632 & 0.803 \\
+kurdi\_smart\_building & default\_0\_50 & 0.500 & 0.000 & 0.000 & 0.000 & 0.000 & 0.632 & 0.803 \\
+kurdi\_smart\_building & mesa\_runtime\_0\_002 & 0.002 & 0.714 & 1.000 & 0.833 & 1.000 & 0.632 & 0.803 \\
+kurdi\_smart\_building & target\_oracle\_best\_f1\_upper\_bound & 0.003 & 0.725 & 1.000 & 0.840 & 0.986 & 0.632 & 0.803 \\
+kurdi\_smart\_building & target\_calibrated\_heldout & 0.003 & 0.725 & 1.000 & 0.840 & 0.986 & 0.676 & 0.820 \\
+\hline
+\end{tabular}
+
+
+% Fine-Tuned Random
+
+\begin{tabular}{llllllllllllll}
+\hline
+dataset & experiment & threshold & precision & recall & F1 & ROC-AUC & PR-AUC & predicted\_positive\_rate & train\_size & test\_size & positive\_rate\_train & positive\_rate\_test & threshold\_method \\
+\hline
+municipal\_v1 & fine\_tuned\_random\_split & 0.051 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.150 & 800 & 200 & 0.150 & 0.150 & target\_train\_validation\_best\_f1 \\
+municipal\_v2 & fine\_tuned\_random\_split & 0.009 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.150 & 1600 & 400 & 0.150 & 0.150 & target\_train\_validation\_best\_f1 \\
+kurdi\_smart\_building & fine\_tuned\_random\_split & 0.026 & 0.909 & 1.000 & 0.952 & 0.963 & 0.986 & 0.786 & 112 & 28 & 0.714 & 0.714 & target\_train\_validation\_best\_f1 \\
+\hline
+\end{tabular}
+
+
+% Grouped Template Family
+
+\begin{tabular}{lllllllllllllllll}
+\hline
+dataset & experiment & threshold & precision & recall & F1 & ROC-AUC & PR-AUC & predicted\_positive\_rate & grouping\_column & number\_of\_train\_groups & number\_of\_test\_groups & shared\_group\_count & split\_strategy & split\_note & train\_size & test\_size \\
+\hline
+municipal\_v2 & fine\_tuned\_grouped\_by\_template\_family & 0.008 & 0.949 & 1.000 & 0.974 & 1.000 & 1.000 & 0.155 & template\_family & 20 & 6 & 0 & strict\_grouped\_split &  & 1620 & 380 \\
+\hline
+\end{tabular}
+
+
+% Grouped Template ID
+
+\begin{tabular}{lllllllllllllllll}
+\hline
+dataset & experiment & threshold & precision & recall & F1 & ROC-AUC & PR-AUC & predicted\_positive\_rate & grouping\_column & number\_of\_train\_groups & number\_of\_test\_groups & shared\_group\_count & split\_strategy & split\_note & train\_size & test\_size \\
+\hline
+municipal\_v2 & fine\_tuned\_grouped\_by\_template\_id & 0.009 & 0.986 & 1.000 & 0.993 & 1.000 & 1.000 & 0.152 & template\_id & 87 & 22 & 0 & strict\_grouped\_split &  & 1534 & 466 \\
+\hline
+\end{tabular}
+
+
+% Hard Negative Evaluation
+
+\begin{tabular}{llllll}
+\hline
+setting & hard\_negative\_count & false\_positive\_count & false\_positive\_rate & specificity\_on\_hard\_negatives & threshold \\
+\hline
+enron\_zero\_shot\_enron\_threshold & 300 & 0 & 0.000 & 1.000 & 0.980 \\
+enron\_zero\_shot\_target\_calibrated\_threshold & 300 & 192 & 0.640 & 0.360 & 0.003 \\
+fine\_tuned\_random\_split\_hard\_negative\_holdout & 51 & 0 & 0.000 & 1.000 & 0.009 \\
+fine\_tuned\_grouped\_template\_family\_hard\_negative\_holdout & 104 & 3 & 0.029 & 0.971 & 0.008 \\
+\hline
+\end{tabular}
+
+
+% V1 vs V2 Comparison
+
+\begin{tabular}{lllll}
+\hline
+result & precision & recall & F1 & PR-AUC \\
+\hline
+municipal\_v1\_zero\_shot & 0.000 & 0.000 & 0.000 & 0.188 \\
+municipal\_v2\_zero\_shot & 0.000 & 0.000 & 0.000 & 0.128 \\
+municipal\_v1\_fine\_tuned\_random & 1.000 & 1.000 & 1.000 & 1.000 \\
+municipal\_v2\_fine\_tuned\_random & 1.000 & 1.000 & 1.000 & 1.000 \\
+municipal\_v2\_grouped\_template\_family & 0.949 & 1.000 & 0.974 & 1.000 \\
+municipal\_v2\_grouped\_template\_id & 0.986 & 1.000 & 0.993 & 1.000 \\
+municipal\_v2\_hard\_negative\_max\_fp\_rate &  &  & 0.640 &  \\
+\hline
+\end{tabular}
+

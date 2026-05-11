@@ -1,0 +1,33 @@
+comparison,metric,test_family,test_name,paired,n_left,n_right,n_pairs,statistic,p_value,p_holm,valid,note
+LSC vs CE-SIEM,actor_precision,not_run,missing_run_level_data,False,0,0,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs CE-SIEM,actor_recall,not_run,missing_run_level_data,False,0,0,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs CE-SIEM,actor_f1,not_run,missing_run_level_data,False,0,0,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs CE-SIEM,ttd_avg,not_run,missing_run_level_data,False,0,0,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs CE-SIEM,ttd_max,not_run,missing_run_level_data,False,0,0,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs CE-SIEM,confirmed_alerts,not_run,missing_run_level_data,False,0,0,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs CE-SIEM,confirmed_alert_precision,not_run,missing_run_level_data,False,0,0,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs CE-SIEM,confirmed_fp_per_run,not_run,missing_run_level_data,False,0,0,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM,actor_precision,not_run,missing_run_level_data,False,0,3,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM,actor_recall,not_run,missing_run_level_data,False,0,3,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM,actor_f1,not_run,missing_run_level_data,False,0,3,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM,ttd_avg,not_run,missing_run_level_data,False,0,3,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM,ttd_max,not_run,missing_run_level_data,False,0,3,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM,confirmed_alerts,not_run,missing_run_level_data,False,0,3,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM,confirmed_alert_precision,not_run,missing_run_level_data,False,0,3,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM,confirmed_fp_per_run,not_run,missing_run_level_data,False,0,3,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM-Enron,actor_precision,not_run,missing_run_level_data,False,0,10,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM-Enron,actor_recall,not_run,missing_run_level_data,False,0,10,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM-Enron,actor_f1,not_run,missing_run_level_data,False,0,10,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM-Enron,ttd_avg,not_run,missing_run_level_data,False,0,10,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM-Enron,ttd_max,not_run,missing_run_level_data,False,0,10,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM-Enron,confirmed_alerts,not_run,missing_run_level_data,False,0,10,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM-Enron,confirmed_alert_precision,not_run,missing_run_level_data,False,0,10,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+LSC vs EG-SIEM-Enron,confirmed_fp_per_run,not_run,missing_run_level_data,False,0,10,0,,,,False,Run-level records missing for one or both variants; aggregate tables were not used.
+EG-SIEM vs EG-SIEM-Enron,actor_precision,not_run,paired_tests_not_valid,False,3,10,3,,,,False,"Matched seeds exist, but EG-SIEM-Enron JSON uses a forensics_primary preset and n_takeover=0, so paired comparison to EG-SIEM scalability rows is not design-matched."
+EG-SIEM vs EG-SIEM-Enron,actor_recall,not_run,paired_tests_not_valid,False,3,10,3,,,,False,"Matched seeds exist, but EG-SIEM-Enron JSON uses a forensics_primary preset and n_takeover=0, so paired comparison to EG-SIEM scalability rows is not design-matched."
+EG-SIEM vs EG-SIEM-Enron,actor_f1,not_run,paired_tests_not_valid,False,3,10,3,,,,False,"Matched seeds exist, but EG-SIEM-Enron JSON uses a forensics_primary preset and n_takeover=0, so paired comparison to EG-SIEM scalability rows is not design-matched."
+EG-SIEM vs EG-SIEM-Enron,ttd_avg,not_run,paired_tests_not_valid,False,3,10,3,,,,False,"Matched seeds exist, but EG-SIEM-Enron JSON uses a forensics_primary preset and n_takeover=0, so paired comparison to EG-SIEM scalability rows is not design-matched."
+EG-SIEM vs EG-SIEM-Enron,ttd_max,not_run,paired_tests_not_valid,False,3,10,3,,,,False,"Matched seeds exist, but EG-SIEM-Enron JSON uses a forensics_primary preset and n_takeover=0, so paired comparison to EG-SIEM scalability rows is not design-matched."
+EG-SIEM vs EG-SIEM-Enron,confirmed_alerts,not_run,paired_tests_not_valid,False,3,10,3,,,,False,"Matched seeds exist, but EG-SIEM-Enron JSON uses a forensics_primary preset and n_takeover=0, so paired comparison to EG-SIEM scalability rows is not design-matched."
+EG-SIEM vs EG-SIEM-Enron,confirmed_alert_precision,not_run,paired_tests_not_valid,False,3,10,3,,,,False,"Matched seeds exist, but EG-SIEM-Enron JSON uses a forensics_primary preset and n_takeover=0, so paired comparison to EG-SIEM scalability rows is not design-matched."
+EG-SIEM vs EG-SIEM-Enron,confirmed_fp_per_run,not_run,paired_tests_not_valid,False,3,10,3,,,,False,"Matched seeds exist, but EG-SIEM-Enron JSON uses a forensics_primary preset and n_takeover=0, so paired comparison to EG-SIEM scalability rows is not design-matched."

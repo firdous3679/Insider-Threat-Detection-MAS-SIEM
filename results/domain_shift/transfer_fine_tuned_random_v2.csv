@@ -1,0 +1,4 @@
+dataset,experiment,threshold,precision,recall,F1,ROC-AUC,PR-AUC,predicted_positive_rate,train_size,test_size,positive_rate_train,positive_rate_test,threshold_method
+municipal_v1,fine_tuned_random_split,0.051000000000000004,1.0,1.0,1.0,1.0,1.0,0.15,800,200,0.15,0.15,target_train_validation_best_f1
+municipal_v2,fine_tuned_random_split,0.009000000000000001,1.0,1.0,1.0,1.0,1.0,0.15,1600,400,0.15,0.15,target_train_validation_best_f1
+kurdi_smart_building,fine_tuned_random_split,0.026000000000000002,0.9090909090909091,1.0,0.9523809523809523,0.9625,0.985692640692641,0.7857142857142857,112,28,0.7142857142857143,0.7142857142857143,target_train_validation_best_f1

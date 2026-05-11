@@ -1,0 +1,71 @@
+\begin{table*}[t]
+\centering
+\caption{Hyperparameters and reproducibility settings for the reported experiments.}
+\label{tab:hyperparameters_reproducibility}
+\small
+\begin{tabular}{llll}
+\toprule
+Component & Parameter & Value & Role in experiment \\
+\midrule
+\multicolumn{4}{l}{\textit{Simulation and evaluation}} \\
+Mesa population & Human agents & 42 & Baseline municipal smart-building simulation scale. \\
+Mesa population & Benign employees / power users / malicious insiders & 30 / 4 / 8 & Ground-truth actor composition. \\
+Mesa population & System agents & 4 & DBMonitor, EmailMonitor, AuthMonitor, SIEMAgent. \\
+Mesa duration & Steps per run & 240 & Main simulation length. \\
+Mesa duration & Warm-up steps & 60 & Baseline/anomaly warm-up before attack-enabled test phase. \\
+Mesa replication & Runs and seeds & 10 runs, seeds 42--51 & Repeated stochastic simulation runs. \\
+Scalability & Human-agent counts & 42, 100, 250, 500, 1000 & Scalability stress-test configurations. \\
+Scalability & Step counts / runs & 240 or 480 steps; 3 runs except 1000-agent run = 1 & Runtime/memory scalability evaluation. \\
+\midrule
+\multicolumn{4}{l}{\textit{SIEM thresholding and scoring}} \\
+Alerting & Early threshold & 2.0 & Threshold for early triage alerts. \\
+Alerting & Confirmed base threshold & 4.0 & Base value for confirmed escalation. \\
+Alerting & Confirmed threshold formula & base + role\_adj + 1.2(trust - 0.5) & Trust- and role-adaptive confirmed threshold. \\
+Alerting & Role adjustments & staff 0, analyst 0.8, admin 1.2 & Role-specific confirmed-threshold offsets. \\
+Alerting & Cooldown & 6 steps & Minimum gap between same-tier alerts for an actor. \\
+Correlation & Sliding window & 48 & Recent activity window for feature extraction. \\
+EWMA baseline & Alpha / z clip / weight & 0.08 / 6.0 / 0.9 & Baseline anomaly smoothing and score contribution. \\
+\midrule
+\multicolumn{4}{l}{\textit{Evidence-gated confirmation}} \\
+Evidence gate & Minimum evidence count & 2 & Prevents single-signal confirmed escalation. \\
+Evidence gate & Minimum evidence weight & 2.5 & Requires sufficient total evidence weight. \\
+Evidence gate & Single evidence can trigger confirmed? & No & Rich EG-SIEM requires count and weight gates before confirmation. \\
+\midrule
+\multicolumn{4}{l}{\textit{Trust adaptation}} \\
+Trust & Initial / min / max & 0.70 / 0.10 / 0.95 & Bounds user trust used in thresholds. \\
+Trust & True-positive update & -0.18 & Confirmed malicious alert lowers trust. \\
+Trust & False-positive update & +0.05 & Confirmed benign alert raises trust. \\
+Trust & Decay toward baseline & Not implemented in EG-SIEM/Enron; LSC decay configured as 0.00 & No trust return-to-baseline effect in current reported experiments. \\
+\midrule
+\multicolumn{4}{l}{\textit{ToM and communication evidence}} \\
+ToM & Intent threshold / weight & 0.30 / 2.0 & Adds cognitive-intent evidence to SIEM score. \\
+ToM & Plan completion threshold & 0.4 & Adds ToM plan feature when plan completion exceeds threshold. \\
+ToM & Contradiction factor & 0.85 per contradiction & Approved/scheduled/work-hours context reduces inferred goal probability. \\
+Forensics & Forensics weight & 1.5 & Adds phishing forensics score to SIEM score. \\
+\midrule
+\multicolumn{4}{l}{\textit{Email forensics}} \\
+Enron data & Full Enron corpus count & Not found; emails.csv not included & Full-corpus style calibration was not recomputed in current repo. \\
+Enron spam data & Usable spam / ham examples & 17,171 / 16,047 & Supervised spam/phishing training after 20-word filter. \\
+Enron spam data & Duplicate report & 17,775 exact duplicates; 15,123 normalized groups & Duplicate-leakage audit. \\
+Text model & TF--IDF dimension & 10,000 & Email classifier feature dimension. \\
+Text model & Classifier & Logistic regression & Selected runtime phishing/spam classifier. \\
+Text model & Logistic regression settings & max\_iter=2000, solver=liblinear, class\_weight=balanced, random\_state=42 & Reproducible classifier settings. \\
+Text model & Grouped-CV metrics & F1 0.8054, ROC--AUC 0.6512, threshold 0.002 & Runtime forensics model operating point. \\
+Domain shift V2 & Enron F1 threshold / Mesa runtime threshold & 0.98 / 0.002 & Threshold-sensitivity comparison settings. \\
+Domain shift V2 & Municipal V2 target-calibrated threshold & 0.003329566888943843 & Held-out target calibration result. \\
+\midrule
+\multicolumn{4}{l}{\textit{Anomaly and online learning}} \\
+EG-SIEM ML & Isolation Forest & 200 trees, contamination 0.02, random\_state 42 & Role-based anomaly score. \\
+EG-SIEM ML & Minimum samples / refit interval & 25 / 15 steps & Controls online role-model fitting. \\
+LSC online update & Learning rate / L2 / weight clip & 0.04 / 1e-4 / 6.0 & Implemented in LSC online feature-weight update. \\
+Enhanced anomaly model & EnhancedRoleAnomalyModel & Implemented in LSC; not used in EG-SIEM/Enron reported experiments & Should be framed as planned or separate variant unless evaluated. \\
+CERT baseline & Isolation Forest / One-Class SVM & contamination=auto; gamma=scale, nu=0.05 & External CERT r4.2 baselines. \\
+\midrule
+\multicolumn{4}{l}{\textit{Reproducibility settings}} \\
+Randomness & Global seed used in email/domain scripts & 42 & Train/test splits and classifiers. \\
+Cross-validation & Enron Phase-1 CV & 5-fold stratified grouped CV when feasible; fallback recorded & Prevents duplicate leakage where group counts allow. \\
+Municipal V2 split & Random fine-tuning & Stratified 80/20, random\_state 42 & Target-domain adaptation test. \\
+Municipal V2 split & Grouped fine-tuning & GroupShuffleSplit, 200 attempts, 20\% test, random\_state 42 & Template-held-out adaptation test. \\
+\bottomrule
+\end{tabular}
+\end{table*}

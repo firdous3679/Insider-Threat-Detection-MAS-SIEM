@@ -16,16 +16,17 @@ def _std(df: pd.DataFrame, event_type: str, source_file: str, resource_col: str 
     out["resource"] = df.get(resource_col, "")
     out["action"] = df.get(action_col, "")
     # Keep metadata lightweight: avoid row-wise dict expansion which is very memory-heavy
-    # on CERT-scale data and can trigger OOM kills.
+    # on CERT-scale data (http.csv is ~14 GB on r4.2 and even larger on r5.2) and can
+    # trigger OOM kills. The detection logic does not consume per-row dict metadata, so
+    # an empty placeholder is sufficient. If a user truly needs the raw row payload
+    # later, they should serialize on demand outside this hot path.
     out["metadata"] = ""
-    out["metadata"] = df.apply(lambda r: r.to_dict(), axis=1)
     out["label"] = 0
     out["day"] = df.get("day")
     return out
 
 
 def build_normalized_events(bundle, sort_events: bool = False) -> pd.DataFrame:
-def build_normalized_events(bundle) -> pd.DataFrame:
     events = [
         _std(bundle.logon, "authentication", "logon.csv", action_col="activity"),
         _std(bundle.device, "device_activity", "device.csv", action_col="activity"),
@@ -38,4 +39,3 @@ def build_normalized_events(bundle) -> pd.DataFrame:
     if sort_events and not all_events.empty:
         all_events = all_events.sort_values("timestamp", na_position="last").reset_index(drop=True)
     return all_events
-    return all_events.sort_values("timestamp", na_position="last").reset_index(drop=True)

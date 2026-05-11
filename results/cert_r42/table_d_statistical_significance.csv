@@ -1,0 +1,2 @@
+Comparison,Metric,Mean difference,Test used,p-value,Significant?
+CERT-EG-SIEM full vs CERT-LSC,F1,0.015488128126213344,descriptive,,N/A

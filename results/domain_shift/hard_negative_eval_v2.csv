@@ -1,0 +1,5 @@
+setting,hard_negative_count,false_positive_count,false_positive_rate,specificity_on_hard_negatives,threshold
+enron_zero_shot_enron_threshold,300,0,0.0,1.0,0.98
+enron_zero_shot_target_calibrated_threshold,300,192,0.64,0.36,0.003329566888943843
+fine_tuned_random_split_hard_negative_holdout,51,0,0.0,1.0,0.009000000000000001
+fine_tuned_grouped_template_family_hard_negative_holdout,104,3,0.028846153846153848,0.9711538461538461,0.008

@@ -1,0 +1,8 @@
+result,precision,recall,F1,PR-AUC
+municipal_v1_zero_shot,0.0,0.0,0.0,0.18828120072502735
+municipal_v2_zero_shot,0.0,0.0,0.0,0.12796168206317396
+municipal_v1_fine_tuned_random,1.0,1.0,1.0,1.0
+municipal_v2_fine_tuned_random,1.0,1.0,1.0,1.0
+municipal_v2_grouped_template_family,0.9491525423728814,1.0,0.9739130434782609,1.0000000000000002
+municipal_v2_grouped_template_id,0.9859154929577465,1.0,0.9929078014184397,0.9999999999999999
+municipal_v2_hard_negative_max_fp_rate,,,0.64,

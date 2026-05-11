@@ -1,0 +1,4 @@
+dataset,experiment,threshold,precision,recall,F1,ROC-AUC,PR-AUC,predicted_positive_rate
+municipal_v1,zero_shot_enron,0.98,0.0,0.0,0.0,0.5866509803921569,0.18828120072502735,0.0
+municipal_v2,zero_shot_enron,0.98,0.0,0.0,0.0,0.44621960784313724,0.12796168206317396,0.0
+kurdi_smart_building,zero_shot_enron,0.98,0.0,0.0,0.0,0.6325,0.8034971227420615,0.0

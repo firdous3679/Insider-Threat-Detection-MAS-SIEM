@@ -1,0 +1,2 @@
+agent_count_human,simulation_steps,run_id,random_seed,model_fidelity,status,error_message,n_emp,n_power,n_exfil,n_stealth,n_takeover,n_staging,n_email,total_agents_including_system,runtime_seconds,peak_memory_mb,peak_python_memory_mb,peak_rss_memory_mb,total_events_generated,events_per_second,confirmed_alerts,early_alerts,confirmed_false_positives,actor_precision,actor_recall,actor_f1,ttd_avg_steps,ttd_max_steps
+42,5,1,42,rich,completed,,30,4,3,2,1,1,1,46,0.591548791002424,0.7809085845947266,0.7809085845947266,0.0,62,104.8096132441355,0,0,0,0,0,0,0,0

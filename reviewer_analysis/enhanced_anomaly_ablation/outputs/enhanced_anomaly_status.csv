@@ -1,0 +1,5 @@
+file,has_enhanced_role_anomaly_model,enhanced_lines,has_simple_ml_model,simple_model_lines,isolation_forest_lines
+mini_mesa_LSC.py,True,"126,364,1031",False,,312
+mini_mesa_CE-SIEM.py,True,"593,894",False,,637
+mini_mesa_EG-SIEM.py,False,,True,"307,524",328
+mini_mesa_EG-SIEM_Enron.py,False,,False,,
